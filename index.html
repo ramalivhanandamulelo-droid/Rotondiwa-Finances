@@ -4,11 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Rotondiwa Finances | Financial Solutions</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 
 *{
     margin:0;
@@ -21,38 +20,70 @@ html,body{
     height:100%;
     overflow:hidden;
     font-family:'Montserrat',sans-serif;
-    background:#020817;
-    color:white;
+    background:#02101f;
+    color:#fff;
 }
 
-/* =========================================
-   MAIN VIDEO FRAME
-========================================= */
-
-.ad-wrapper{
-    width:100vw;
-    height:100vh;
+body{
     display:flex;
     align-items:center;
     justify-content:center;
-    background:
-        radial-gradient(circle at 50% 20%,rgba(12,75,145,.25),transparent 40%),
-        #020817;
-}
-
-.video{
-    position:relative;
-    width:min(100vw,56.25vh);
-    height:min(100vh,177.78vw);
-    max-width:600px;
-    max-height:1067px;
-    overflow:hidden;
-    background:#061426;
-    box-shadow:0 0 80px rgba(0,0,0,.8);
 }
 
 /* =========================================
-   BACKGROUND
+   MAIN AD
+========================================= */
+
+.ad{
+    position:relative;
+    width:min(100vw,56.25vh);
+    height:min(100vh,177.78vw);
+    max-width:620px;
+    max-height:1100px;
+    overflow:hidden;
+    background:#031426;
+    box-shadow:0 0 80px rgba(0,100,220,.25);
+}
+
+/* =========================================
+   BLUE LIGHT
+========================================= */
+
+.blue-light{
+    position:absolute;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    background:#008cff;
+    filter:blur(120px);
+    opacity:.18;
+    animation:lightMove 8s ease-in-out infinite alternate;
+    z-index:1;
+}
+
+.light1{
+    top:-160px;
+    left:-150px;
+}
+
+.light2{
+    right:-180px;
+    bottom:-100px;
+    background:#00d5ff;
+    animation-delay:2s;
+}
+
+@keyframes lightMove{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(80px,60px) scale(1.25);
+    }
+}
+
+/* =========================================
+   SCENES
 ========================================= */
 
 .scene{
@@ -60,11 +91,12 @@ html,body{
     inset:0;
     opacity:0;
     visibility:hidden;
-    transform:scale(1.05);
+    transform:scale(1.08);
     transition:
-        opacity 1s ease,
-        transform 7s ease,
-        visibility 1s;
+        opacity .8s ease,
+        transform 5s ease,
+        visibility .8s;
+    z-index:2;
 }
 
 .scene.active{
@@ -73,158 +105,202 @@ html,body{
     transform:scale(1);
 }
 
-/* Dark cinematic overlay */
+/* =========================================
+   CINEMATIC BACKGROUNDS
+========================================= */
 
-.scene::after{
+.scene1{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,20,45,.25),
+        rgba(1,12,28,.88)
+    ),
+    url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+.scene2{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,35,70,.15),
+        rgba(1,13,28,.9)
+    ),
+    url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+.scene3{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,30,65,.15),
+        rgba(0,10,24,.9)
+    ),
+    url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+.scene4{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,30,70,.15),
+        rgba(0,10,24,.9)
+    ),
+    url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+.scene5{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,35,75,.1),
+        rgba(0,12,28,.88)
+    ),
+    url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+.scene6{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,30,70,.15),
+        rgba(0,9,23,.9)
+    ),
+    url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+.scene7{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,50,100,.18),
+        rgba(0,10,25,.92)
+    ),
+    url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+.scene8{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,35,80,.1),
+        rgba(0,8,20,.94)
+    ),
+    url("https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1200&q=90")
+    center/cover;
+}
+
+/* =========================================
+   DARK CINEMATIC OVERLAY
+========================================= */
+
+.scene:after{
     content:"";
     position:absolute;
     inset:0;
     background:
         linear-gradient(
-            to bottom,
-            rgba(0,0,0,.25),
-            rgba(2,8,23,.3) 35%,
-            rgba(2,8,23,.95) 100%
+            180deg,
+            rgba(0,0,0,.05) 0%,
+            rgba(0,12,28,.18) 35%,
+            rgba(0,7,17,.96) 100%
         );
+    z-index:2;
 }
 
 /* =========================================
-   IMAGE BACKGROUNDS
-========================================= */
-
-.scene1{
-    background:
-        linear-gradient(120deg,rgba(1,10,25,.82),rgba(4,38,75,.65)),
-        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-.scene2{
-    background:
-        linear-gradient(120deg,rgba(0,8,20,.5),rgba(1,23,45,.6)),
-        url("https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-.scene3{
-    background:
-        linear-gradient(120deg,rgba(1,12,28,.45),rgba(1,18,35,.75)),
-        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-.scene4{
-    background:
-        linear-gradient(120deg,rgba(0,8,18,.5),rgba(1,25,50,.72)),
-        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-.scene5{
-    background:
-        linear-gradient(120deg,rgba(0,7,17,.4),rgba(0,28,55,.72)),
-        url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-.scene6{
-    background:
-        linear-gradient(120deg,rgba(1,8,18,.65),rgba(2,32,62,.75)),
-        url("https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-.scene7{
-    background:
-        linear-gradient(120deg,rgba(1,8,18,.55),rgba(0,28,60,.75)),
-        url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-.scene8{
-    background:
-        linear-gradient(120deg,rgba(1,8,20,.7),rgba(0,31,65,.78)),
-        url("https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-}
-
-/* =========================================
-   GOLD LIGHT
-========================================= */
-
-.gold-line{
-    position:absolute;
-    left:-20%;
-    width:140%;
-    height:2px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #d6a83c,
-        #fff1a7,
-        #d6a83c,
-        transparent
-    );
-    box-shadow:0 0 15px rgba(224,180,65,.65);
-    z-index:5;
-}
-
-.line-top{
-    top:10%;
-}
-
-.line-bottom{
-    bottom:9%;
-}
-
-/* =========================================
-   BRAND
+   TOP BRAND
 ========================================= */
 
 .brand{
     position:absolute;
-    top:45px;
-    left:35px;
-    right:35px;
-    z-index:10;
+    top:35px;
+    left:28px;
+    right:28px;
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:12px;
+    z-index:10;
 }
 
 .logo{
-    width:58px;
-    height:58px;
-    border:2px solid #e2b64d;
-    border-radius:16px;
+    width:52px;
+    height:52px;
+    border-radius:15px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#e7bd59;
-    font-size:27px;
-    font-weight:900;
-    box-shadow:
-        inset 0 0 15px rgba(227,187,76,.15),
-        0 0 20px rgba(227,187,76,.12);
-}
 
-.brand-name{
-    line-height:1;
+    background:
+        linear-gradient(
+            145deg,
+            #e7f8ff,
+            #68cfff
+        );
+
+    color:#03213d;
+
+    font-size:26px;
+    font-weight:900;
+
+    box-shadow:
+        0 0 25px rgba(72,196,255,.4);
 }
 
 .brand-name strong{
     display:block;
-    font-size:20px;
+    font-size:18px;
     letter-spacing:3px;
 }
 
 .brand-name span{
     display:block;
-    margin-top:5px;
-    color:#e6b94d;
-    font-size:11px;
+    margin-top:4px;
+    color:#71d3ff;
+    font-size:10px;
     letter-spacing:5px;
-    font-weight:700;
+    font-weight:800;
+}
+
+/* =========================================
+   BLUE LINE
+========================================= */
+
+.blue-line{
+    position:absolute;
+    z-index:9;
+    left:-10%;
+    width:120%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #26bfff,
+            #dff8ff,
+            #26bfff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px rgba(35,190,255,.75);
+}
+
+.top-line{
+    top:105px;
+}
+
+.bottom-line{
+    bottom:82px;
 }
 
 /* =========================================
@@ -233,223 +309,394 @@ html,body{
 
 .content{
     position:absolute;
-    z-index:8;
-    left:35px;
-    right:35px;
-    bottom:115px;
+    z-index:10;
+    left:28px;
+    right:28px;
+    bottom:105px;
 }
 
 .eyebrow{
-    color:#e6bd58;
-    font-size:11px;
-    font-weight:800;
+    color:#6ed6ff;
+    font-size:10px;
+    font-weight:900;
     letter-spacing:4px;
     text-transform:uppercase;
-    margin-bottom:13px;
+    margin-bottom:12px;
 }
 
 h1{
-    font-size:42px;
-    line-height:1.04;
-    font-weight:900;
+    font-size:39px;
+    line-height:1.02;
     letter-spacing:-1.5px;
+    font-weight:900;
 }
 
 h1 span{
-    color:#e6b94d;
+    color:#69d5ff;
 }
 
 .subtitle{
-    margin-top:18px;
-    font-size:14px;
+    margin-top:15px;
+    color:#d3e4ef;
+    font-size:12px;
     line-height:1.65;
-    color:rgba(255,255,255,.84);
-    max-width:470px;
+    max-width:440px;
 }
 
 /* =========================================
-   BUTTON
+   CTA
 ========================================= */
 
 .cta{
     display:inline-flex;
     align-items:center;
     gap:10px;
-    margin-top:25px;
-    padding:14px 22px;
-    border-radius:5px;
-    background:linear-gradient(135deg,#f0ca63,#c89526);
-    color:#061426;
-    text-decoration:none;
-    font-size:12px;
+
+    margin-top:20px;
+    padding:13px 20px;
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff8ff,
+            #5ecbff
+        );
+
+    color:#03213d;
+
+    font-size:10px;
     font-weight:900;
-    letter-spacing:1px;
-    box-shadow:0 8px 25px rgba(218,169,54,.3);
+    letter-spacing:1.2px;
+
+    box-shadow:
+        0 8px 30px rgba(51,190,255,.35);
+
+    text-decoration:none;
 }
 
-.cta .arrow{
+.arrow{
     font-size:18px;
 }
 
 /* =========================================
-   INFO CARDS
+   ACTION CARD
 ========================================= */
 
-.info-grid{
+.action-card{
+    margin-top:18px;
+    padding:15px;
+
+    border-radius:12px;
+
+    background:
+        rgba(1,19,38,.76);
+
+    border:
+        1px solid rgba(102,210,255,.35);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+}
+
+.action-card strong{
+    display:block;
+    font-size:13px;
+}
+
+.action-card p{
+    margin-top:5px;
+    color:#b9cbd8;
+    font-size:9px;
+    line-height:1.5;
+}
+
+/* =========================================
+   DOCUMENT CARDS
+========================================= */
+
+.documents{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:22px;
+    gap:8px;
+    margin-top:18px;
 }
 
-.info-card{
-    padding:15px;
-    border:1px solid rgba(229,190,83,.32);
-    background:rgba(1,14,31,.72);
-    backdrop-filter:blur(8px);
-    border-radius:10px;
+.document{
+    padding:13px;
+
+    border-radius:9px;
+
+    background:
+        rgba(1,16,32,.78);
+
+    border:
+        1px solid rgba(85,203,255,.28);
 }
 
-.info-card .icon{
+.document .icon{
     font-size:20px;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
-.info-card strong{
+.document strong{
     display:block;
-    font-size:12px;
+    font-size:10px;
 }
 
-.info-card small{
+.document small{
     display:block;
-    margin-top:5px;
-    color:#bfc9d5;
-    font-size:9px;
+    margin-top:4px;
+    color:#9fb2c1;
+    font-size:8px;
     line-height:1.4;
 }
 
 /* =========================================
-   PEOPLE SCENE
+   PHONE APPROVAL
 ========================================= */
 
-.person-message{
+.phone{
     position:absolute;
-    z-index:9;
-    left:30px;
-    right:30px;
-    bottom:105px;
+    z-index:11;
+
+    right:27px;
+    bottom:130px;
+
+    width:145px;
+    height:270px;
+
+    border-radius:25px;
+
+    background:#071321;
+
+    border:
+        3px solid #cdefff;
+
+    box-shadow:
+        0 0 45px rgba(52,199,255,.35);
+
+    transform:
+        rotate(7deg)
+        translateY(15px);
+
+    animation:
+        phoneFloat 2.8s ease-in-out infinite alternate;
 }
 
-.quote{
-    max-width:420px;
-    padding:18px 20px;
-    background:rgba(1,10,22,.78);
-    border-left:3px solid #e0b54b;
-    backdrop-filter:blur(8px);
+@keyframes phoneFloat{
+
+    from{
+        transform:
+            rotate(7deg)
+            translateY(15px);
+    }
+
+    to{
+        transform:
+            rotate(5deg)
+            translateY(-5px);
+    }
 }
 
-.quote h2{
-    font-size:27px;
-    line-height:1.12;
+.phone-top{
+    height:25px;
+    background:#071321;
 }
 
-.quote p{
-    margin-top:10px;
-    color:#d5dce5;
-    font-size:12px;
-    line-height:1.55;
+.phone-screen{
+    position:absolute;
+    top:25px;
+    left:8px;
+    right:8px;
+    bottom:8px;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #071d35,
+            #063f67
+        );
+
+    padding:16px 10px;
 }
 
-/* =========================================
-   PROCESS
-========================================= */
-
-.process{
-    margin-top:20px;
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-}
-
-.step{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:11px;
-    border-radius:8px;
-    background:rgba(2,14,29,.76);
-    border:1px solid rgba(255,255,255,.09);
-}
-
-.number{
-    min-width:31px;
-    height:31px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#dcae3e;
-    color:#061426;
-    font-size:12px;
-    font-weight:900;
-}
-
-.step strong{
-    font-size:11px;
-}
-
-.step span{
-    display:block;
-    color:#aeb8c5;
+.phone-logo{
     font-size:9px;
-    margin-top:3px;
+    color:#71d7ff;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-/* =========================================
-   CONTACT
-========================================= */
+.approved{
+    margin-top:42px;
 
-.contact-box{
-    margin-top:22px;
-    padding:18px;
-    background:rgba(2,12,26,.82);
-    border:1px solid rgba(226,185,72,.4);
-    border-radius:12px;
-}
+    width:75px;
+    height:75px;
 
-.contact-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin:9px 0;
-    font-size:11px;
-}
+    margin-left:auto;
+    margin-right:auto;
 
-.contact-icon{
-    width:28px;
-    height:28px;
     border-radius:50%;
+
+    border:
+        3px solid #68d7ff;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#d9aa3d;
-    color:#061426;
-    font-weight:900;
+
+    font-size:35px;
+
+    color:#71dcff;
+
+    box-shadow:
+        0 0 25px rgba(69,208,255,.4);
+
+    animation:
+        approvePulse 1.5s infinite;
+}
+
+@keyframes approvePulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+.approved-text{
+    text-align:center;
+    margin-top:15px;
+}
+
+.approved-text strong{
+    display:block;
+    color:#fff;
+    font-size:12px;
+}
+
+.approved-text small{
+    display:block;
+    margin-top:5px;
+    color:#8edfff;
+    font-size:8px;
 }
 
 /* =========================================
-   FINAL SCENE
+   CASH / PAYMENT MOMENT
+========================================= */
+
+.cash{
+    display:flex;
+    gap:5px;
+    margin-top:18px;
+}
+
+.cash-note{
+    width:55px;
+    height:30px;
+
+    border-radius:4px;
+
+    border:1px solid rgba(180,235,255,.5);
+
+    background:
+        linear-gradient(
+            135deg,
+            #65c9f4,
+            #b8ecff
+        );
+
+    color:#063253;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:8px;
+    font-weight:900;
+
+    transform:
+        rotate(
+            calc(var(--r) * 1deg)
+        );
+}
+
+/* =========================================
+   PEOPLE ACTION LABEL
+========================================= */
+
+.action-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:9px 12px;
+
+    background:
+        rgba(1,18,36,.78);
+
+    border-left:
+        3px solid #65d3ff;
+
+    backdrop-filter:blur(8px);
+
+    margin-bottom:12px;
+}
+
+.action-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#61d5ff;
+
+    box-shadow:
+        0 0 12px #61d5ff;
+}
+
+/* =========================================
+   FINAL
 ========================================= */
 
 .final{
     position:absolute;
-    z-index:10;
     inset:0;
+    z-index:30;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
-    padding:35px;
+
+    padding:28px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(0,155,255,.25),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            #021a31,
+            #020914
+        );
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .8s ease;
 }
 
 .final-inner{
@@ -457,34 +704,50 @@ h1 span{
 }
 
 .final-logo{
-    width:85px;
-    height:85px;
-    margin:0 auto 22px;
-    border:2px solid #e3b94f;
-    border-radius:24px;
+    width:78px;
+    height:78px;
+
+    margin:0 auto 20px;
+
+    border-radius:22px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#e3b94f;
-    font-size:38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e5faff,
+            #58c9ff
+        );
+
+    color:#03213d;
+
+    font-size:37px;
     font-weight:900;
-    box-shadow:0 0 45px rgba(225,185,70,.2);
+
+    box-shadow:
+        0 0 50px rgba(70,205,255,.3);
 }
 
 .final h2{
-    font-size:36px;
+    font-size:35px;
     line-height:1.05;
 }
 
 .final h2 span{
-    color:#e6b94d;
+    color:#65d5ff;
 }
 
 .final p{
-    margin:18px auto 0;
-    max-width:410px;
-    color:#c5ced8;
-    font-size:13px;
+    margin:16px auto 0;
+
+    max-width:400px;
+
+    color:#bfd0dd;
+
+    font-size:11px;
     line-height:1.6;
 }
 
@@ -494,10 +757,13 @@ h1 span{
 
 .progress{
     position:absolute;
-    z-index:20;
-    left:20px;
-    right:20px;
-    top:20px;
+
+    top:17px;
+    left:18px;
+    right:18px;
+
+    z-index:50;
+
     display:flex;
     gap:4px;
 }
@@ -505,91 +771,112 @@ h1 span{
 .progress span{
     height:3px;
     flex:1;
-    background:rgba(255,255,255,.2);
-    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.2);
 }
 
 .progress span.active{
-    background:#dcb047;
+    background:#65d5ff;
+
+    box-shadow:
+        0 0 8px rgba(75,207,255,.7);
 }
 
 /* =========================================
-   SCENE NUMBER
-========================================= */
-
-.scene-counter{
-    position:absolute;
-    z-index:20;
-    right:22px;
-    bottom:25px;
-    font-size:9px;
-    color:rgba(255,255,255,.6);
-    letter-spacing:2px;
-}
-
-/* =========================================
-   SOUND / PLAY CONTROLS
+   CONTROLS
 ========================================= */
 
 .controls{
     position:absolute;
-    z-index:50;
-    bottom:20px;
-    left:20px;
+
+    bottom:17px;
+    left:18px;
+
+    z-index:60;
+
     display:flex;
-    gap:7px;
+    gap:6px;
 }
 
 .control{
-    width:35px;
-    height:35px;
+    width:32px;
+    height:32px;
+
     border-radius:50%;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(0,0,0,.45);
-    color:white;
+
+    border:
+        1px solid rgba(112,213,255,.4);
+
+    background:
+        rgba(0,14,28,.65);
+
+    color:#fff;
+
     cursor:pointer;
+}
+
+/* =========================================
+   COUNTER
+========================================= */
+
+.counter{
+    position:absolute;
+
+    right:20px;
+    bottom:25px;
+
+    z-index:50;
+
+    color:#8eb8cc;
+
+    font-size:8px;
+
+    letter-spacing:2px;
 }
 
 /* =========================================
    MOBILE
 ========================================= */
 
-@media(max-width:600px){
+@media(max-width:500px){
 
     h1{
-        font-size:34px;
+        font-size:33px;
     }
 
     .brand{
-        top:38px;
-    }
-
-    .content{
-        bottom:100px;
+        top:32px;
     }
 
     .logo{
-        width:48px;
-        height:48px;
-        font-size:22px;
+        width:46px;
+        height:46px;
     }
 
     .brand-name strong{
-        font-size:17px;
+        font-size:16px;
     }
 
-    .quote h2{
-        font-size:24px;
+    .phone{
+        transform:
+            scale(.9)
+            rotate(7deg);
+        right:5px;
     }
+
 }
 </style>
 </head>
 
 <body>
 
-<div class="ad-wrapper">
+<div class="ad">
 
-<div class="video">
+<!-- BLUE LIGHT -->
+<div class="blue-light light1"></div>
+<div class="blue-light light2"></div>
+
 
 <!-- PROGRESS -->
 <div class="progress">
@@ -601,513 +888,557 @@ h1 span{
     <span></span>
     <span></span>
     <span></span>
+    <span></span>
 </div>
 
 
 <!-- =========================================
-     SCENE 1
+     SCENE 1 — OPENING
 ========================================= -->
 
 <section class="scene scene1">
 
-<div class="brand">
-    <div class="logo">R</div>
+    <div class="brand">
 
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
+        <div class="logo">R</div>
 
-<div class="gold-line line-top"></div>
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
+        </div>
 
-<div class="content">
-
-    <div class="eyebrow">
-        Financial Solutions
     </div>
 
-    <h1>
-        When life needs<br>
-        <span>financial support.</span>
-    </h1>
+    <div class="blue-line top-line"></div>
 
-    <p class="subtitle">
-        At Rotondiwa Finances, we make the application process
-        simple, convenient and professional.
-    </p>
+    <div class="content">
 
-    <a class="cta" href="#">
-        DISCOVER YOUR OPTIONS
-        <span class="arrow">→</span>
-    </a>
+        <div class="eyebrow">
+            Financial Solutions
+        </div>
 
-</div>
+        <h1>
+            When you need<br>
+            <span>financial support.</span>
+        </h1>
 
-<div class="gold-line line-bottom"></div>
+        <p class="subtitle">
+            Meet Rotondiwa Finances — making the journey
+            from application to financial assistance simple,
+            clear and convenient.
+        </p>
+
+        <a class="cta" href="https://gleaming-flan-dfa40f.netlify.app/">
+            START YOUR APPLICATION
+            <span class="arrow">→</span>
+        </a>
+
+    </div>
+
+    <div class="blue-line bottom-line"></div>
 
 </section>
 
 
 <!-- =========================================
-     SCENE 2
+     SCENE 2 — PERSON ENTERS
 ========================================= -->
 
 <section class="scene scene2">
 
-<div class="brand">
-    <div class="logo">R</div>
+    <div class="brand">
 
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
+        <div class="logo">R</div>
 
-<div class="person-message">
-
-    <div class="eyebrow">
-        Personal Assistance
-    </div>
-
-    <div class="quote">
-
-        <h2>
-            Real people.<br>
-            Real conversations.
-        </h2>
-
-        <p>
-            Have questions about your application?
-            Speak to our team and get guidance through
-            the process.
-        </p>
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
+        </div>
 
     </div>
 
-</div>
+    <div class="content">
+
+        <div class="action-label">
+            <div class="action-dot"></div>
+            CUSTOMER EXPERIENCE
+        </div>
+
+        <h1>
+            Walk in.<br>
+            <span>Let's talk.</span>
+        </h1>
+
+        <div class="action-card">
+
+            <strong>
+                Personal assistance from our team.
+            </strong>
+
+            <p>
+                Have questions? Our team can guide you
+                through the application process and explain
+                what information is required.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- =========================================
-     SCENE 3
+     SCENE 3 — CONSULTATION
 ========================================= -->
 
 <section class="scene scene3">
 
-<div class="brand">
-    <div class="logo">R</div>
+    <div class="brand">
 
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
+        <div class="logo">R</div>
 
-<div class="person-message">
-
-    <div class="eyebrow">
-        Simple Application
-    </div>
-
-    <div class="quote">
-
-        <h2>
-            Sit down.<br>
-            Let's get started.
-        </h2>
-
-        <p>
-            Our application process is designed to
-            make submitting your information clear
-            and straightforward.
-        </p>
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
+        </div>
 
     </div>
 
-</div>
+    <div class="content">
+
+        <div class="action-label">
+            <div class="action-dot"></div>
+            APPLICATION SUPPORT
+        </div>
+
+        <h1>
+            From enquiry<br>
+            <span>to application.</span>
+        </h1>
+
+        <div class="action-card">
+
+            <strong>
+                A clear process makes a difference.
+            </strong>
+
+            <p>
+                Sit with our team, complete the necessary
+                information and submit your supporting
+                documents.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- =========================================
-     SCENE 4
+     SCENE 4 — DOCUMENTS
 ========================================= -->
 
 <section class="scene scene4">
 
-<div class="brand">
-    <div class="logo">R</div>
+    <div class="brand">
 
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
+        <div class="logo">R</div>
 
-<div class="content">
-
-    <div class="eyebrow">
-        What You Need
-    </div>
-
-    <h1>
-        Get your<br>
-        <span>documents ready.</span>
-    </h1>
-
-    <div class="info-grid">
-
-        <div class="info-card">
-            <div class="icon">🪪</div>
-            <strong>South African ID</strong>
-            <small>
-                A clear copy of your valid identification.
-            </small>
-        </div>
-
-        <div class="info-card">
-            <div class="icon">🏦</div>
-            <strong>Bank Statements</strong>
-            <small>
-                Your recent bank statements as required.
-            </small>
-        </div>
-
-        <div class="info-card">
-            <div class="icon">🏠</div>
-            <strong>Proof of Residence</strong>
-            <small>
-                Recent proof of your residential address.
-            </small>
-        </div>
-
-        <div class="info-card">
-            <div class="icon">📄</div>
-            <strong>Additional Details</strong>
-            <small>
-                Any other information requested during
-                the application.
-            </small>
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
         </div>
 
     </div>
 
-</div>
+    <div class="content">
+
+        <div class="eyebrow">
+            Get Ready
+        </div>
+
+        <h1>
+            Have your<br>
+            <span>documents ready.</span>
+        </h1>
+
+        <div class="documents">
+
+            <div class="document">
+
+                <div class="icon">🪪</div>
+
+                <strong>SA ID</strong>
+
+                <small>
+                    Clear copy of valid identification.
+                </small>
+
+            </div>
+
+            <div class="document">
+
+                <div class="icon">🏦</div>
+
+                <strong>BANK STATEMENTS</strong>
+
+                <small>
+                    Recent statements as required.
+                </small>
+
+            </div>
+
+            <div class="document">
+
+                <div class="icon">🏠</div>
+
+                <strong>PROOF OF RESIDENCE</strong>
+
+                <small>
+                    Recent residential address proof.
+                </small>
+
+            </div>
+
+            <div class="document">
+
+                <div class="icon">📄</div>
+
+                <strong>OTHER DETAILS</strong>
+
+                <small>
+                    Information requested during application.
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- =========================================
-     SCENE 5
+     SCENE 5 — ONLINE APPLICATION
 ========================================= -->
 
 <section class="scene scene5">
 
-<div class="brand">
-    <div class="logo">R</div>
+    <div class="brand">
 
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
+        <div class="logo">R</div>
 
-<div class="content">
-
-    <div class="eyebrow">
-        Apply Online
-    </div>
-
-    <h1>
-        No need to<br>
-        <span>wait in line.</span>
-    </h1>
-
-    <p class="subtitle">
-        Apply online from your phone, tablet or computer.
-        Complete the application and submit your documents
-        digitally.
-    </p>
-
-    <div class="info-grid">
-
-        <div class="info-card">
-            <div class="icon">📱</div>
-            <strong>Any Device</strong>
-            <small>
-                Apply using your smartphone or computer.
-            </small>
-        </div>
-
-        <div class="info-card">
-            <div class="icon">🌐</div>
-            <strong>Online Application</strong>
-            <small>
-                Complete your application digitally.
-            </small>
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
         </div>
 
     </div>
 
-</div>
+    <div class="content">
+
+        <div class="action-label">
+            <div class="action-dot"></div>
+            APPLY ONLINE
+        </div>
+
+        <h1>
+            Can't come in?<br>
+            <span>Apply online.</span>
+        </h1>
+
+        <p class="subtitle">
+            Use your phone, tablet or computer.
+            Complete the application, upload your
+            documents and submit.
+        </p>
+
+        <a class="cta"
+           href="https://gleaming-flan-dfa40f.netlify.app/"
+           target="_blank">
+
+            APPLY ONLINE
+
+            <span class="arrow">→</span>
+
+        </a>
+
+    </div>
 
 </section>
 
 
 <!-- =========================================
-     SCENE 6
+     SCENE 6 — APPROVAL NOTIFICATION
 ========================================= -->
 
 <section class="scene scene6">
 
-<div class="brand">
-    <div class="logo">R</div>
+    <div class="brand">
 
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
+        <div class="logo">R</div>
 
-<div class="content">
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
+        </div>
 
-    <div class="eyebrow">
-        How It Works
     </div>
 
-    <h1>
-        Simple.<br>
-        <span>Clear. Convenient.</span>
-    </h1>
 
-    <div class="process">
+    <!-- PHONE -->
 
-        <div class="step">
+    <div class="phone">
 
-            <div class="number">1</div>
+        <div class="phone-top"></div>
 
-            <div>
-                <strong>START YOUR APPLICATION</strong>
-                <span>Complete the online application form.</span>
+        <div class="phone-screen">
+
+            <div class="phone-logo">
+                ROTONDIWA FINANCES
             </div>
 
-        </div>
-
-        <div class="step">
-
-            <div class="number">2</div>
-
-            <div>
-                <strong>UPLOAD YOUR DOCUMENTS</strong>
-                <span>Submit the required supporting documents.</span>
+            <div class="approved">
+                ✓
             </div>
 
-        </div>
+            <div class="approved-text">
 
-        <div class="step">
+                <strong>
+                    APPLICATION APPROVED
+                </strong>
 
-            <div class="number">3</div>
+                <small>
+                    Subject to applicable terms
+                    and conditions.
+                </small>
 
-            <div>
-                <strong>APPLICATION REVIEW</strong>
-                <span>Your information is assessed according to our process.</span>
-            </div>
-
-        </div>
-
-        <div class="step">
-
-            <div class="number">4</div>
-
-            <div>
-                <strong>GET A RESPONSE</strong>
-                <span>You'll be contacted regarding the outcome.</span>
             </div>
 
         </div>
 
     </div>
 
-</div>
 
-</section>
+    <div class="content">
 
+        <div class="action-label">
+            <div class="action-dot"></div>
+            APPLICATION OUTCOME
+        </div>
 
-<!-- =========================================
-     SCENE 7
-========================================= -->
+        <h1>
+            A notification<br>
+            <span>on your phone.</span>
+        </h1>
 
-<section class="scene scene7">
-
-<div class="brand">
-    <div class="logo">R</div>
-
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
-
-<div class="person-message">
-
-    <div class="eyebrow">
-        Your Information Matters
-    </div>
-
-    <div class="quote">
-
-        <h2>
-            Professional support.<br>
-            Clear communication.
-        </h2>
-
-        <p>
-            We aim to make every step of your application
-            clear, so you know what information is required
-            and what happens next.
+        <p class="subtitle">
+            When an application is approved, the customer
+            can receive communication regarding the next
+            steps.
         </p>
 
     </div>
 
-    <div class="info-grid">
+</section>
 
-        <div class="info-card">
-            <div class="icon">🔒</div>
-            <strong>Privacy</strong>
-            <small>
-                Your information should be handled responsibly.
-            </small>
-        </div>
 
-        <div class="info-card">
-            <div class="icon">🤝</div>
-            <strong>Support</strong>
-            <small>
-                Our team is available to assist with enquiries.
-            </small>
+<!-- =========================================
+     SCENE 7 — FUNDS / CUSTOMER MOMENT
+========================================= -->
+
+<section class="scene scene7">
+
+    <div class="brand">
+
+        <div class="logo">R</div>
+
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
         </div>
 
     </div>
 
-</div>
+
+    <div class="content">
+
+        <div class="action-label">
+            <div class="action-dot"></div>
+            MOVING FORWARD
+        </div>
+
+        <h1>
+            When the process<br>
+            <span>comes together.</span>
+        </h1>
+
+        <p class="subtitle">
+            Approved customers proceed according to the
+            agreed terms and applicable conditions.
+        </p>
+
+
+        <div class="cash">
+
+            <div class="cash-note"
+                 style="--r:-6">
+                R
+            </div>
+
+            <div class="cash-note"
+                 style="--r:4">
+                R
+            </div>
+
+            <div class="cash-note"
+                 style="--r:-3">
+                R
+            </div>
+
+        </div>
+
+
+        <div class="action-card">
+
+            <strong>
+                Your plans. Your next step.
+            </strong>
+
+            <p>
+                Financial support should come with clear
+                information and responsible borrowing.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- =========================================
-     SCENE 8
+     SCENE 8 — HAPPY CUSTOMER
 ========================================= -->
 
 <section class="scene scene8">
 
-<div class="brand">
-    <div class="logo">R</div>
+    <div class="brand">
 
-    <div class="brand-name">
-        <strong>ROTONDIWA</strong>
-        <span>FINANCES</span>
-    </div>
-</div>
+        <div class="logo">R</div>
 
-<div class="content">
-
-    <div class="eyebrow">
-        Start Today
-    </div>
-
-    <h1>
-        Your next step<br>
-        <span>starts here.</span>
-    </h1>
-
-    <div class="contact-box">
-
-        <div class="contact-row">
-            <div class="contact-icon">W</div>
-            <strong>WhatsApp: 060 948 6195</strong>
-        </div>
-
-        <div class="contact-row">
-            <div class="contact-icon">@</div>
-            <strong>Rotondiwafinances@gmail.com</strong>
-        </div>
-
-        <div class="contact-row">
-            <div class="contact-icon">F</div>
-            <strong>Facebook: Rotondiwa Finances</strong>
-        </div>
-
-        <div class="contact-row">
-            <div class="contact-icon">🌐</div>
-            <strong>Apply Online</strong>
+        <div class="brand-name">
+            <strong>ROTONDIWA</strong>
+            <span>FINANCES</span>
         </div>
 
     </div>
 
-    <a class="cta" href="https://gleaming-flan-dfa40f.netlify.app/" target="_blank">
-        APPLY ONLINE NOW
-        <span class="arrow">→</span>
-    </a>
 
-</div>
+    <div class="content">
+
+        <div class="action-label">
+            <div class="action-dot"></div>
+            KEEP MOVING FORWARD
+        </div>
+
+        <h1>
+            Your goals.<br>
+            <span>Your future.</span>
+        </h1>
+
+        <p class="subtitle">
+            Whatever your financial plans, take the time
+            to understand your options and choose
+            responsibly.
+        </p>
+
+        <a class="cta"
+           href="https://gleaming-flan-dfa40.netlify.app/"
+           target="_blank">
+
+            APPLY ONLINE TODAY
+
+            <span class="arrow">→</span>
+
+        </a>
+
+    </div>
 
 </section>
 
 
 <!-- =========================================
-     FINAL BRAND SCREEN
+     FINAL SCREEN
 ========================================= -->
 
-<div class="final" id="finalScreen">
+<div class="final" id="final">
 
-<div class="final-inner">
+    <div class="final-inner">
 
-    <div class="final-logo">
-        R
+        <div class="final-logo">
+            R
+        </div>
+
+        <div class="eyebrow">
+            ROTONDIWA FINANCES
+        </div>
+
+        <h2>
+            YOUR GOALS.<br>
+            <span>OUR SUPPORT.</span>
+        </h2>
+
+        <p>
+            Start your application online and take
+            the next step with Rotondiwa Finances.
+        </p>
+
+        <a class="cta"
+           href="https://gleaming-flan-dfa40.netlify.app/"
+           target="_blank">
+
+            APPLY ONLINE NOW
+
+            <span class="arrow">→</span>
+
+        </a>
+
+        <div style="
+            margin-top:22px;
+            font-size:10px;
+            color:#7fa0b2;
+            line-height:1.6;
+        ">
+
+            WhatsApp: 060 948 6195<br>
+            Rotondiwafinances@gmail.com<br>
+            Facebook: Rotondiwa Finances
+
+        </div>
+
+        <div style="
+            margin-top:15px;
+            font-size:7px;
+            color:#607789;
+            line-height:1.5;
+        ">
+
+            Credit is subject to approval, affordability
+            assessment and applicable terms and conditions.
+            Responsible borrowing is encouraged.
+
+            <br><br>
+
+            Regulatory / registration details:
+            ADD VERIFIED DETAILS HERE
+
+        </div>
+
     </div>
-
-    <div class="eyebrow">
-        ROTONDIWA FINANCES
-    </div>
-
-    <h2>
-        YOUR GOALS.<br>
-        <span>OUR SUPPORT.</span>
-    </h2>
-
-    <p>
-        Start your application online today and
-        take the next step with Rotondiwa Finances.
-    </p>
-
-    <a class="cta"
-       href="https://gleaming-flan-dfa40f.netlify.app/"
-       target="_blank">
-
-        APPLY ONLINE
-
-        <span class="arrow">→</span>
-
-    </a>
-
-    <p style="font-size:9px;margin-top:22px;color:#7f8b99;">
-        Credit is subject to approval, affordability assessment,
-        applicable terms and conditions. Responsible borrowing is encouraged.
-    </p>
-
-    <!-- IMPORTANT:
-         Replace the line below with your VERIFIED
-         NCR/FSP/company registration information.
-    -->
-
-    <p style="font-size:8px;color:#687585;margin-top:8px;">
-        Regulatory / registration details:
-        ADD VERIFIED DETAILS HERE
-    </p>
-
-</div>
 
 </div>
 
@@ -1116,21 +1447,20 @@ h1 span{
 
 <div class="controls">
 
-    <button class="control" id="pauseBtn">
+    <button class="control" id="pause">
         ❚❚
     </button>
 
-    <button class="control" id="restartBtn">
+    <button class="control" id="restart">
         ↻
     </button>
 
 </div>
 
-<div class="scene-counter" id="counter">
+<div class="counter" id="counter">
     01 / 08
 </div>
 
-</div>
 
 </div>
 
@@ -1138,27 +1468,47 @@ h1 span{
 <script>
 
 /* =========================================
-   ROTONDIWA FINANCES VIDEO ENGINE
+   ROTONDIWA FINANCES
+   CINEMATIC AD ENGINE
 ========================================= */
 
-const scenes = document.querySelectorAll(".scene");
-const progress = document.querySelectorAll(".progress span");
-const counter = document.getElementById("counter");
-const finalScreen = document.getElementById("finalScreen");
+const scenes =
+    document.querySelectorAll(".scene");
+
+const bars =
+    document.querySelectorAll(".progress span");
+
+const final =
+    document.getElementById("final");
+
+const counter =
+    document.getElementById("counter");
+
+const pause =
+    document.getElementById("pause");
+
+const restart =
+    document.getElementById("restart");
+
 
 let current = 0;
+
+let timer = null;
+
 let playing = true;
-let timer;
+
 
 /*
-   Approximately 30 seconds total.
-
-   Each scene:
-   3.5 - 4 seconds
+   8 scenes x 3.8 seconds
+   = approximately 30 seconds
 */
 
-const duration = 3800;
+const sceneDuration = 3800;
 
+
+/* =========================================
+   SHOW SCENE
+========================================= */
 
 function showScene(index){
 
@@ -1166,50 +1516,27 @@ function showScene(index){
         scene.classList.remove("active");
     });
 
-    progress.forEach(bar => {
+    bars.forEach(bar => {
         bar.classList.remove("active");
     });
+
 
     if(index < scenes.length){
 
         scenes[index].classList.add("active");
 
-        if(progress[index]){
-            progress[index].classList.add("active");
-        }
+        bars[index].classList.add("active");
 
         counter.textContent =
             String(index + 1).padStart(2,"0")
             + " / 08";
 
     }
-
 }
 
 
 /* =========================================
-   START
-========================================= */
-
-function startAd(){
-
-    clearTimeout(timer);
-
-    playing = true;
-
-    finalScreen.style.opacity = "0";
-    finalScreen.style.visibility = "hidden";
-
-    showScene(current);
-
-    timer = setTimeout(nextScene,duration);
-
-    document.getElementById("pauseBtn").textContent = "❚❚";
-}
-
-
-/* =========================================
-   NEXT
+   NEXT SCENE
 ========================================= */
 
 function nextScene(){
@@ -1220,68 +1547,103 @@ function nextScene(){
 
     if(current >= scenes.length){
 
-        finishAd();
+        showFinal();
 
         return;
-
     }
 
     showScene(current);
 
-    timer = setTimeout(nextScene,duration);
-
+    timer =
+        setTimeout(
+            nextScene,
+            sceneDuration
+        );
 }
 
 
 /* =========================================
-   FINISH
+   FINAL SCREEN
 ========================================= */
 
-function finishAd(){
+function showFinal(){
 
     clearTimeout(timer);
 
-    scenes.forEach(scene=>{
+    scenes.forEach(scene => {
         scene.classList.remove("active");
     });
 
-    progress.forEach(bar=>{
+    bars.forEach(bar => {
         bar.classList.remove("active");
     });
 
-    finalScreen.style.opacity = "1";
-    finalScreen.style.visibility = "visible";
+    final.style.visibility = "visible";
 
-    counter.textContent = "ROTONDIWA FINANCES";
+    final.style.opacity = "1";
+
+    counter.textContent =
+        "ROTONDIWA FINANCES";
 
     playing = false;
 
-    document.getElementById("pauseBtn").textContent = "▶";
-
+    pause.textContent = "▶";
 }
 
 
 /* =========================================
-   PAUSE
+   START
 ========================================= */
 
-document.getElementById("pauseBtn").addEventListener("click",function(){
+function start(){
+
+    clearTimeout(timer);
+
+    final.style.opacity = "0";
+
+    final.style.visibility = "hidden";
+
+    current = 0;
+
+    playing = true;
+
+    pause.textContent = "❚❚";
+
+    showScene(0);
+
+    timer =
+        setTimeout(
+            nextScene,
+            sceneDuration
+        );
+}
+
+
+/* =========================================
+   PAUSE / PLAY
+========================================= */
+
+pause.addEventListener("click",()=>{
 
     if(playing){
 
         playing = false;
+
         clearTimeout(timer);
 
-        this.textContent = "▶";
+        pause.textContent = "▶";
 
     }else{
 
         playing = true;
 
-        this.textContent = "❚❚";
+        pause.textContent = "❚❚";
 
-        timer = setTimeout(nextScene,500);
-
+        timer =
+            setTimeout(
+                nextScene,
+                500
+            );
     }
 
 });
@@ -1291,52 +1653,45 @@ document.getElementById("pauseBtn").addEventListener("click",function(){
    RESTART
 ========================================= */
 
-document.getElementById("restartBtn").addEventListener("click",function(){
+restart.addEventListener("click",()=>{
 
-    current = 0;
-
-    finalScreen.style.opacity = "0";
-    finalScreen.style.visibility = "hidden";
-
-    startAd();
+    start();
 
 });
 
 
 /* =========================================
-   START AUTOMATICALLY
+   KEYBOARD
+========================================= */
+
+document.addEventListener("keydown",(event)=>{
+
+    if(event.code === "Space"){
+
+        pause.click();
+
+    }
+
+    if(event.code === "KeyR"){
+
+        restart.click();
+
+    }
+
+});
+
+
+/* =========================================
+   START AD
 ========================================= */
 
 window.addEventListener("load",()=>{
 
     setTimeout(()=>{
 
-        showScene(0);
+        start();
 
-        timer = setTimeout(nextScene,duration);
-
-    },500);
-
-});
-
-
-/* =========================================
-   KEYBOARD CONTROLS
-========================================= */
-
-document.addEventListener("keydown",function(e){
-
-    if(e.code === "Space"){
-
-        document.getElementById("pauseBtn").click();
-
-    }
-
-    if(e.code === "KeyR"){
-
-        document.getElementById("restartBtn").click();
-
-    }
+    },700);
 
 });
 
