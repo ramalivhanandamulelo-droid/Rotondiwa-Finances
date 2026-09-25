@@ -1,10 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Rotondiwa Finances | Animated Commercial</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Rotondiwa Finances | Commercial</title>
 
 <style>
 *{
@@ -17,8 +18,8 @@ html,body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#020914;
-    font-family:Arial,Helvetica,sans-serif;
+    background:#02070d;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -27,954 +28,514 @@ body{
     align-items:center;
 }
 
+/* =========================================
+   CINEMATIC FRAME
+========================================= */
+
 .ad{
     position:relative;
-    width:min(100vw,56.25vh);
-    height:min(100vh,177.78vw);
-    max-width:620px;
-    max-height:1100px;
+    width:100vw;
+    height:100vh;
+    max-width:56.25vh;
     overflow:hidden;
-    background:
-        radial-gradient(circle at 50% 40%,#073b68 0%,#03182c 35%,#010914 75%);
-    color:white;
+    background:#02070d;
 }
 
-/* =====================================================
-   BLUE LIGHTING
-===================================================== */
+/* =========================================
+   VIDEO
+========================================= */
 
-.glow{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(70px);
-    pointer-events:none;
-    z-index:1;
-}
-
-.glow1{
-    width:300px;
-    height:300px;
-    background:#008cff;
-    opacity:.35;
-    left:-100px;
-    top:80px;
-    animation:glowMove 7s infinite alternate ease-in-out;
-}
-
-.glow2{
-    width:350px;
-    height:350px;
-    background:#00d9ff;
-    opacity:.22;
-    right:-150px;
-    bottom:80px;
-    animation:glowMove2 8s infinite alternate ease-in-out;
-}
-
-@keyframes glowMove{
-    from{transform:translate(0,0);}
-    to{transform:translate(100px,80px);}
-}
-
-@keyframes glowMove2{
-    from{transform:translate(0,0);}
-    to{transform:translate(-100px,-70px);}
-}
-
-/* =====================================================
-   OFFICE
-===================================================== */
-
-.office{
+.video{
     position:absolute;
     inset:0;
-    z-index:2;
-}
-
-/* ceiling */
-.ceiling{
-    position:absolute;
-    left:0;
-    top:0;
     width:100%;
-    height:18%;
-    background:linear-gradient(#071c31,#031224);
-    border-bottom:2px solid #159cff;
-    box-shadow:0 5px 25px #008cff;
-}
-
-/* blue ceiling strips */
-.ceiling:before,
-.ceiling:after{
-    content:"";
-    position:absolute;
-    top:40px;
-    height:4px;
-    width:38%;
-    background:#55d9ff;
-    box-shadow:0 0 18px #00bfff;
-}
-
-.ceiling:before{left:5%;}
-.ceiling:after{right:5%;}
-
-/* floor */
-.floor{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:42%;
-    background:
-        linear-gradient(105deg,
-        #020912 0%,
-        #09233b 48%,
-        #020912 100%);
-    transform:perspective(500px) rotateX(45deg);
-    transform-origin:bottom;
-}
-
-/* floor blue reflection */
-.floor-light{
-    position:absolute;
-    bottom:8%;
-    left:10%;
-    width:80%;
-    height:8px;
-    background:#008cff;
-    filter:blur(8px);
-    opacity:.7;
-}
-
-/* back wall */
-.wall{
-    position:absolute;
-    top:18%;
-    left:0;
-    width:100%;
-    height:42%;
-    background:
-        linear-gradient(90deg,#031223,#062746,#031223);
-}
-
-/* window */
-.window{
-    position:absolute;
-    top:23%;
-    right:5%;
-    width:42%;
-    height:27%;
-    border:3px solid #2bbdff;
-    background:
-        linear-gradient(120deg,
-        rgba(0,174,255,.15),
-        rgba(0,35,70,.7));
-    box-shadow:
-        0 0 20px rgba(0,174,255,.5),
-        inset 0 0 30px rgba(0,174,255,.15);
-}
-
-.window:before,
-.window:after{
-    content:"";
-    position:absolute;
-    background:#159cff;
-}
-
-.window:before{
-    width:2px;
     height:100%;
-    left:50%;
+    object-fit:cover;
+    opacity:0;
+    transform:scale(1.04);
+    transition:
+        opacity 1s ease,
+        transform 8s cubic-bezier(.2,.7,.2,1);
+    filter:
+        brightness(.72)
+        contrast(1.08)
+        saturate(.92);
 }
 
-.window:after{
-    width:100%;
-    height:2px;
-    top:50%;
+.video.active{
+    opacity:1;
+    transform:scale(1);
 }
 
-/* city lights */
-.city{
+/* =========================================
+   BLUE CINEMATIC LIGHT
+========================================= */
+
+.blueLight{
     position:absolute;
-    bottom:10%;
-    left:5%;
-    right:5%;
-    height:25%;
+    inset:-20%;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            ellipse at 15% 45%,
+            rgba(0,120,255,.35),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 90% 20%,
+            rgba(0,190,255,.20),
+            transparent 32%
+        ),
+        linear-gradient(
+            115deg,
+            rgba(0,75,180,.25),
+            transparent 40%,
+            rgba(0,145,255,.08)
+        );
+
+    mix-blend-mode:screen;
+    animation:lightMove 8s ease-in-out infinite alternate;
 }
 
-.city i{
+@keyframes lightMove{
+    from{
+        transform:translateX(-2%) scale(1);
+    }
+
+    to{
+        transform:translateX(3%) scale(1.06);
+    }
+}
+
+/* =========================================
+   DARK CINEMATIC GRADIENT
+========================================= */
+
+.vignette{
     position:absolute;
-    bottom:0;
-    width:8%;
-    background:#03101f;
-    border-top:1px solid #087dcc;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.65) 0%,
+            rgba(0,0,0,.04) 30%,
+            rgba(0,0,0,.05) 60%,
+            rgba(0,0,0,.82) 100%
+        );
+
+    pointer-events:none;
 }
 
-.city i:nth-child(1){height:60%;left:2%;}
-.city i:nth-child(2){height:85%;left:12%;}
-.city i:nth-child(3){height:45%;left:24%;}
-.city i:nth-child(4){height:72%;left:35%;}
-.city i:nth-child(5){height:55%;left:49%;}
-.city i:nth-child(6){height:90%;left:62%;}
-.city i:nth-child(7){height:50%;left:76%;}
-.city i:nth-child(8){height:70%;left:88%;}
+/* =========================================
+   FILM GRAIN
+========================================= */
 
-/* =====================================================
-   BRAND
-===================================================== */
+.grain{
+    position:absolute;
+    inset:-50%;
+
+    opacity:.06;
+    pointer-events:none;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+    animation:grain .2s steps(2) infinite;
+}
+
+@keyframes grain{
+    0%{transform:translate(0,0)}
+    25%{transform:translate(2%,-1%)}
+    50%{transform:translate(-1%,2%)}
+    75%{transform:translate(1%,1%)}
+    100%{transform:translate(-2%,-2%)}
+}
+
+/* =========================================
+   TOP BRAND
+========================================= */
 
 .brand{
     position:absolute;
     top:35px;
     left:28px;
-    z-index:50;
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
 
-.logo{
-    width:50px;
-    height:50px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
-    font-weight:900;
-    color:#021629;
-    background:linear-gradient(145deg,#ecfbff,#49c9ff);
-    box-shadow:0 0 30px rgba(60,207,255,.7);
-}
-
-.brand strong{
-    display:block;
-    font-size:18px;
-    letter-spacing:3px;
-}
-
-.brand small{
-    display:block;
-    margin-top:4px;
-    color:#65d8ff;
-    letter-spacing:5px;
-    font-size:9px;
-    font-weight:bold;
-}
-
-/* =====================================================
-   RECEPTION DESK
-===================================================== */
-
-.desk{
-    position:absolute;
-    z-index:10;
-    left:15%;
-    bottom:29%;
-    width:70%;
-    height:105px;
-    background:
-        linear-gradient(145deg,#102f48,#04111e);
-    border:1px solid #148fd0;
-    border-radius:8px 8px 3px 3px;
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.5),
-        0 0 20px rgba(0,140,255,.15);
-}
-
-.desk:after{
-    content:"ROTONDIWA FINANCES";
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:15px;
-    text-align:center;
-    color:#63d7ff;
-    font-size:10px;
-    letter-spacing:3px;
-    font-weight:bold;
-}
-
-/* monitor */
-.monitor{
-    position:absolute;
-    z-index:13;
-    width:115px;
-    height:75px;
-    left:43%;
-    bottom:40%;
-    background:#01070d;
-    border:3px solid #182f43;
-    border-radius:7px;
-    box-shadow:0 0 20px #008cff;
-}
-
-.monitor-screen{
-    position:absolute;
-    inset:7px;
-    background:
-        linear-gradient(145deg,#052d4c,#008fd1);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    font-size:8px;
-    font-weight:bold;
-}
-
-.monitor-screen span{
-    color:white;
-}
-
-/* =====================================================
-   CONSULTANT
-===================================================== */
-
-.person{
-    position:absolute;
     z-index:20;
+
+    opacity:0;
+    transform:translateY(-15px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
 
-.consultant{
-    left:57%;
-    bottom:34%;
-    width:65px;
-    height:170px;
+.brand.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-/* head */
-.head{
+.brandName{
+    color:white;
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.brandLine{
+    width:42px;
+    height:3px;
+    margin-top:7px;
+
+    background:#1d9dff;
+    box-shadow:
+        0 0 10px rgba(29,157,255,.9),
+        0 0 25px rgba(29,157,255,.5);
+}
+
+/* =========================================
+   SCENE TEXT
+========================================= */
+
+.sceneText{
     position:absolute;
-    top:0;
-    left:17px;
-    width:38px;
-    height:45px;
-    border-radius:50%;
-    background:#8a5638;
-    border:2px solid #17344a;
+    z-index:15;
+
+    left:30px;
+    right:30px;
+    bottom:105px;
+
+    color:white;
+
+    opacity:0;
+    transform:translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
 
-.hair{
-    position:absolute;
-    top:-3px;
-    left:4px;
-    width:30px;
-    height:17px;
-    border-radius:20px 20px 8px 8px;
-    background:#111;
+.sceneText.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-/* body */
-.body{
-    position:absolute;
-    top:42px;
-    left:7px;
-    width:52px;
-    height:82px;
-    border-radius:15px 15px 5px 5px;
-    background:linear-gradient(145deg,#f5f9ff,#78d5ff);
+.kicker{
+    color:#51b8ff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    margin-bottom:10px;
 }
 
-.body:after{
-    content:"R";
-    position:absolute;
-    top:15px;
-    left:20px;
-    color:#06304e;
-    font-weight:900;
+.headline{
+    font-size:35px;
+    line-height:1.03;
+    font-weight:800;
+    letter-spacing:-1.5px;
+
+    text-shadow:
+        0 4px 20px rgba(0,0,0,.7);
 }
 
-/* arms */
-.arm{
-    position:absolute;
-    top:55px;
-    width:15px;
-    height:65px;
-    border-radius:10px;
-    background:#8a5638;
+.description{
+    margin-top:12px;
+
+    max-width:310px;
+
+    color:rgba(255,255,255,.82);
+
+    font-size:13px;
+    line-height:1.5;
 }
 
-.arm.left{
-    left:-3px;
-    transform:rotate(25deg);
-}
+/* =========================================
+   APPROVAL NOTIFICATION
+========================================= */
 
-.arm.right{
-    right:-3px;
-    transform:rotate(-25deg);
-}
-
-/* legs */
-.leg{
-    position:absolute;
-    top:116px;
-    width:19px;
-    height:65px;
-    border-radius:10px;
-    background:#07131f;
-}
-
-.leg.left{left:12px;}
-.leg.right{right:12px;}
-
-/* =====================================================
-   CUSTOMER
-===================================================== */
-
-.customer{
-    left:-100px;
-    bottom:31%;
-    width:70px;
-    height:180px;
-    transition:none;
-}
-
-.customer .head{
-    left:18px;
-}
-
-.customer .body{
-    top:44px;
-    background:linear-gradient(145deg,#e8f8ff,#258ed0);
-}
-
-.customer .arm{
-    top:58px;
-}
-
-.customer .leg{
-    top:118px;
-}
-
-/* =====================================================
-   LAPTOP
-===================================================== */
-
-.laptop{
+.approval{
     position:absolute;
     z-index:25;
-    left:43%;
-    bottom:34%;
-    width:110px;
-    height:70px;
+
+    left:50%;
+    top:52%;
+
+    width:270px;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.7);
+
     opacity:0;
-    transform:scale(.7);
+
+    background:
+        rgba(3,13,23,.92);
+
+    border:1px solid rgba(61,177,255,.55);
+
+    border-radius:20px;
+
+    padding:23px;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.65),
+        0 0 45px rgba(0,132,255,.18);
+
+    backdrop-filter:blur(14px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s cubic-bezier(.16,1,.3,1);
 }
 
-.laptop-screen{
-    width:100%;
-    height:55px;
-    background:#020a12;
-    border:3px solid #7898aa;
-    border-radius:6px;
-    padding:7px;
+.approval.show{
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
 }
 
-.application{
-    width:100%;
-    height:100%;
-    background:#052d4b;
-    padding:6px;
-    font-size:6px;
-}
+.approvalIcon{
+    width:46px;
+    height:46px;
 
-.progress-bar{
-    margin-top:5px;
-    height:5px;
-    background:#12384e;
-}
+    border-radius:50%;
 
-.progress-bar span{
-    display:block;
-    width:75%;
-    height:100%;
-    background:#32c8ff;
-    box-shadow:0 0 8px #32c8ff;
-}
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-.laptop-base{
-    width:120%;
-    margin-left:-10%;
-    height:9px;
-    background:#7898aa;
-    transform:skew(-25deg);
-}
+    margin-bottom:15px;
 
-/* =====================================================
-   PHONE
-===================================================== */
+    background:#0a8dff;
 
-.phone{
-    position:absolute;
-    z-index:40;
-    right:9%;
-    bottom:30%;
-    width:85px;
-    height:155px;
-    border:4px solid #a9eaff;
-    border-radius:17px;
-    background:#020912;
-    box-shadow:0 0 35px #00aaff;
-    opacity:0;
-}
+    box-shadow:
+        0 0 25px rgba(10,141,255,.55);
 
-.phone-screen{
-    position:absolute;
-    inset:8px;
-    border-radius:10px;
-    background:linear-gradient(#073b61,#02192c);
-    padding:12px 7px;
-    text-align:center;
-}
-
-.phone-title{
-    font-size:7px;
-    color:#70ddff;
+    color:white;
+    font-size:21px;
     font-weight:bold;
 }
 
-.phone-circle{
-    width:45px;
-    height:45px;
-    margin:25px auto 8px;
-    border-radius:50%;
-    border:3px solid #5bd9ff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
-    color:#5bd9ff;
-    box-shadow:0 0 20px #00bfff;
+.approvalTitle{
+    color:white;
+    font-size:20px;
+    font-weight:800;
 }
 
-/* =====================================================
-   CASH
-===================================================== */
+.approvalText{
+    color:rgba(255,255,255,.68);
+    margin-top:7px;
+    font-size:12px;
+    line-height:1.5;
+}
 
-.cash{
+.approvalSmall{
+    margin-top:15px;
+    color:#51b8ff;
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.final{
+    position:absolute;
+    z-index:30;
+
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,107,255,.18),
+            transparent 48%
+        ),
+        rgba(0,4,9,.76);
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:opacity 1s ease;
+}
+
+.final.show{
+    opacity:1;
+}
+
+.finalLogo{
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    color:white;
+
+    text-shadow:
+        0 0 25px rgba(0,151,255,.65);
+}
+
+.finalLine{
+    width:55px;
+    height:3px;
+
+    background:#199cff;
+
+    margin:12px auto 22px;
+
+    box-shadow:
+        0 0 20px rgba(25,156,255,.9);
+}
+
+.finalTitle{
+    color:white;
+
+    font-size:38px;
+    line-height:1.02;
+    font-weight:900;
+
+    max-width:340px;
+}
+
+.finalSub{
+    color:rgba(255,255,255,.76);
+
+    font-size:13px;
+    line-height:1.5;
+
+    max-width:300px;
+
+    margin-top:15px;
+}
+
+.website{
+    margin-top:24px;
+
+    color:white;
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+
+    padding:13px 22px;
+
+    border:1px solid rgba(68,179,255,.65);
+    border-radius:100px;
+
+    background:rgba(0,100,190,.18);
+
+    box-shadow:
+        0 0 25px rgba(0,132,255,.18);
+}
+
+/* =========================================
+   DISCLAIMER
+========================================= */
+
+.disclaimer{
     position:absolute;
     z-index:35;
-    left:45%;
-    bottom:39%;
-    width:70px;
-    height:50px;
-    opacity:0;
-}
 
-.note{
-    position:absolute;
-    width:60px;
-    height:32px;
-    border-radius:4px;
-    background:linear-gradient(135deg,#a8efff,#37a9df);
-    border:1px solid white;
-    color:#043453;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
-    box-shadow:0 0 12px #32c8ff;
-}
-
-.note:nth-child(1){transform:rotate(-8deg);}
-.note:nth-child(2){transform:rotate(7deg) translate(8px,-3px);}
-.note:nth-child(3){transform:rotate(-2deg) translate(4px,4px);}
-
-/* =====================================================
-   APPROVAL POPUP
-===================================================== */
-
-.approval{
-    position:absolute;
-    z-index:45;
-    right:5%;
-    top:28%;
-    width:190px;
-    padding:14px;
-    border:1px solid #39ceff;
-    border-radius:13px;
-    background:rgba(1,19,35,.92);
-    box-shadow:0 0 30px rgba(0,190,255,.5);
-    opacity:0;
-    transform:translateY(20px) scale(.8);
-}
-
-.approval-icon{
-    float:left;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    border:2px solid #5edbff;
-    color:#5edbff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-right:10px;
-    font-weight:bold;
-}
-
-.approval strong{
-    font-size:10px;
-    display:block;
-    padding-top:3px;
-}
-
-.approval small{
-    color:#8caaba;
-    font-size:7px;
-}
-
-/* =====================================================
-   WALK OUT MESSAGE
-===================================================== */
-
-.success{
-    position:absolute;
-    z-index:50;
-    top:63%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    text-align:center;
-    opacity:0;
-}
-
-.success h1{
-    font-size:30px;
-    letter-spacing:-1px;
-}
-
-.success h1 span{
-    color:#5edbff;
-}
-
-.success p{
-    margin-top:8px;
-    color:#b8d4e4;
-    font-size:10px;
-}
-
-/* =====================================================
-   BOTTOM CTA
-===================================================== */
-
-.cta{
-    position:absolute;
-    z-index:60;
-    left:50%;
-    bottom:28px;
-    transform:translateX(-50%);
-    white-space:nowrap;
-    padding:13px 22px;
-    border-radius:7px;
-    text-decoration:none;
-    color:#02172a;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:1px;
-    background:linear-gradient(135deg,#e5faff,#4dcaff);
-    box-shadow:0 0 30px rgba(51,197,255,.55);
-}
-
-/* =====================================================
-   ANIMATION TIMELINE
-===================================================== */
-
-/*
-   ONE CONTINUOUS COMMERCIAL
-
-   0-5s     customer enters
-   5-10s    customer approaches consultant
-   10-15s   application begins
-   15-20s   application submitted
-   20-25s   approval arrives
-   25-30s   money handover
-   30-35s   customer leaves
-*/
-
-.customer{
-    animation:
-        enterOffice 5s linear forwards,
-        leaveOffice 5s linear 30s forwards;
-}
-
-@keyframes enterOffice{
-    0%{
-        left:-100px;
-        transform:scale(1);
-    }
-    100%{
-        left:31%;
-        transform:scale(1);
-    }
-}
-
-@keyframes leaveOffice{
-    0%{
-        left:31%;
-    }
-    100%{
-        left:115%;
-    }
-}
-
-/* customer arms move */
-.customer .arm.right{
-    animation:walkArm .45s infinite alternate;
-}
-
-.customer .leg.left{
-    animation:walkLeg .45s infinite alternate;
-}
-
-.customer .leg.right{
-    animation:walkLeg2 .45s infinite alternate;
-}
-
-@keyframes walkArm{
-    from{transform:rotate(-25deg);}
-    to{transform:rotate(25deg);}
-}
-
-@keyframes walkLeg{
-    from{transform:rotate(12deg);}
-    to{transform:rotate(-12deg);}
-}
-
-@keyframes walkLeg2{
-    from{transform:rotate(-12deg);}
-    to{transform:rotate(12deg);}
-}
-
-/* laptop appears after entering */
-.laptop{
-    animation:laptopAction 10s ease-in-out 8s forwards;
-}
-
-@keyframes laptopAction{
-    0%{
-        opacity:0;
-        transform:scale(.7);
-    }
-    15%{
-        opacity:1;
-        transform:scale(1);
-    }
-    70%{
-        opacity:1;
-        transform:scale(1);
-    }
-    100%{
-        opacity:0;
-        transform:scale(1.05);
-    }
-}
-
-/* phone approval */
-.phone{
-    animation:phoneApproval 5s ease-in-out 19s forwards;
-}
-
-@keyframes phoneApproval{
-    0%{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    20%{
-        opacity:1;
-        transform:translateY(0);
-    }
-    80%{
-        opacity:1;
-        transform:translateY(0);
-    }
-    100%{
-        opacity:0;
-        transform:translateY(-20px);
-    }
-}
-
-/* approval notification */
-.approval{
-    animation:approvalPop 5s ease-in-out 19.5s forwards;
-}
-
-@keyframes approvalPop{
-    0%{
-        opacity:0;
-        transform:translateY(20px) scale(.8);
-    }
-    20%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-    75%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-    100%{
-        opacity:0;
-        transform:translateY(-15px) scale(.95);
-    }
-}
-
-/* cash */
-.cash{
-    animation:cashShow 6s ease-in-out 24s forwards;
-}
-
-@keyframes cashShow{
-    0%{
-        opacity:0;
-        transform:translateY(20px) scale(.6);
-    }
-    20%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-    70%{
-        opacity:1;
-        transform:translate(40px,-5px) scale(1);
-    }
-    100%{
-        opacity:0;
-        transform:translate(70px,-10px) scale(.8);
-    }
-}
-
-/* success */
-.success{
-    animation:successShow 5s ease-in-out 29s forwards;
-}
-
-@keyframes successShow{
-    0%{
-        opacity:0;
-        transform:translate(-50%,-40%);
-    }
-    20%{
-        opacity:1;
-        transform:translate(-50%,-50%);
-    }
-    80%{
-        opacity:1;
-        transform:translate(-50%,-50%);
-    }
-    100%{
-        opacity:0;
-        transform:translate(-50%,-60%);
-    }
-}
-
-/* =====================================================
-   LIGHT SWEEP
-===================================================== */
-
-.light-sweep{
-    position:absolute;
-    z-index:55;
-    top:0;
-    left:-30%;
-    width:20%;
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(70,210,255,.2),
-        transparent
-    );
-    transform:skewX(-15deg);
-    animation:sweep 5s infinite;
-}
-
-@keyframes sweep{
-    0%{left:-30%;}
-    100%{left:130%;}
-}
-
-/* =====================================================
-   TIMER
-===================================================== */
-
-.timer{
-    position:absolute;
-    z-index:100;
-    top:18px;
+    left:20px;
     right:20px;
-    width:120px;
-    height:3px;
+    bottom:13px;
+
+    color:rgba(255,255,255,.42);
+
+    font-size:7px;
+    line-height:1.35;
+
+    text-align:center;
+}
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress{
+    position:absolute;
+    z-index:40;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:2px;
+
     background:rgba(255,255,255,.15);
 }
 
-.timer span{
-    display:block;
+.progressBar{
+    width:0%;
     height:100%;
-    width:0;
-    background:#58d8ff;
-    box-shadow:0 0 10px #58d8ff;
-    animation:timer 35s linear forwards;
+
+    background:#219fff;
+
+    box-shadow:
+        0 0 12px #219fff;
 }
 
-@keyframes timer{
-    to{width:100%;}
-}
+/* =========================================
+   SOUND BUTTON
+========================================= */
 
-/* replay */
-.replay{
+.sound{
     position:absolute;
-    z-index:100;
-    right:20px;
-    bottom:25px;
-    border:1px solid #2dbbff;
-    background:rgba(0,20,35,.7);
-    color:#8ee4ff;
-    padding:7px 10px;
-    border-radius:5px;
+    z-index:50;
+
+    right:24px;
+    top:30px;
+
+    width:34px;
+    height:34px;
+
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:50%;
+
+    background:rgba(0,0,0,.35);
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     cursor:pointer;
-    font-size:9px;
+
+    font-size:12px;
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* =========================================
+   DESKTOP PRESENTATION
+========================================= */
 
-@media(max-width:500px){
+@media(min-width:700px){
 
-    .brand{
-        top:28px;
-        left:20px;
+    .ad{
+        height:90vh;
+        border-radius:16px;
+
+        box-shadow:
+            0 30px 100px rgba(0,0,0,.75),
+            0 0 70px rgba(0,91,180,.12);
     }
 
-    .logo{
-        width:44px;
-        height:44px;
-    }
-
-    .brand strong{
-        font-size:15px;
-    }
-
-    .brand small{
-        font-size:8px;
-    }
-
-    .consultant{
-        left:55%;
-        transform:scale(.9);
-    }
-
-    .monitor{
-        transform:scale(.85);
-    }
-
-    .approval{
-        right:3%;
-        width:175px;
-    }
-
-    .success h1{
-        font-size:25px;
-    }
 }
 </style>
 </head>
@@ -983,216 +544,463 @@ body{
 
 <div class="ad">
 
-    <!-- BLUE LIGHT -->
-    <div class="glow glow1"></div>
-    <div class="glow glow2"></div>
+    <!-- =====================================
+         REAL VIDEO CLIPS
+         Replace these files with your
+         realistic human/office footage.
+    ====================================== -->
 
-    <!-- OFFICE -->
-    <div class="office">
+    <video
+        id="video1"
+        class="video active"
+        muted
+        playsinline
+        preload="auto">
 
-        <div class="ceiling"></div>
+        <source src="videos/entrance.mp4" type="video/mp4">
+    </video>
 
-        <div class="wall">
+    <video
+        id="video2"
+        class="video"
+        muted
+        playsinline
+        preload="auto">
 
-            <div class="window">
+        <source src="videos/consultation.mp4" type="video/mp4">
+    </video>
 
-                <div class="city">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                </div>
+    <video
+        id="video3"
+        class="video"
+        muted
+        playsinline
+        preload="auto">
 
-            </div>
+        <source src="videos/application.mp4" type="video/mp4">
+    </video>
 
+    <video
+        id="video4"
+        class="video"
+        muted
+        playsinline
+        preload="auto">
+
+        <source src="videos/approval.mp4" type="video/mp4">
+    </video>
+
+    <video
+        id="video5"
+        class="video"
+        muted
+        playsinline
+        preload="auto">
+
+        <source src="videos/assistance.mp4" type="video/mp4">
+    </video>
+
+    <video
+        id="video6"
+        class="video"
+        muted
+        playsinline
+        preload="auto">
+
+        <source src="videos/exit.mp4" type="video/mp4">
+    </video>
+
+
+    <!-- CINEMATIC EFFECTS -->
+
+    <div class="blueLight"></div>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+
+
+    <!-- BRAND -->
+
+    <div class="brand" id="brand">
+
+        <div class="brandName">
+            ROTONDIWA FINANCES
         </div>
 
-        <div class="floor"></div>
-        <div class="floor-light"></div>
-
-        <!-- BRAND -->
-        <div class="brand">
-            <div class="logo">R</div>
-
-            <div>
-                <strong>ROTONDIWA</strong>
-                <small>FINANCES</small>
-            </div>
-        </div>
-
-        <!-- DESK -->
-        <div class="desk"></div>
-
-        <!-- MONITOR -->
-        <div class="monitor">
-            <div class="monitor-screen">
-                <span>
-                    ROTONDIWA<br>
-                    FINANCES
-                </span>
-            </div>
-        </div>
-
-        <!-- CONSULTANT -->
-        <div class="person consultant">
-
-            <div class="head">
-                <div class="hair"></div>
-            </div>
-
-            <div class="body"></div>
-
-            <div class="arm left"></div>
-            <div class="arm right"></div>
-
-            <div class="leg left"></div>
-            <div class="leg right"></div>
-
-        </div>
-
-        <!-- CUSTOMER -->
-        <div class="person customer">
-
-            <div class="head">
-                <div class="hair"></div>
-            </div>
-
-            <div class="body"></div>
-
-            <div class="arm left"></div>
-            <div class="arm right"></div>
-
-            <div class="leg left"></div>
-            <div class="leg right"></div>
-
-        </div>
-
-        <!-- LAPTOP -->
-        <div class="laptop">
-
-            <div class="laptop-screen">
-
-                <div class="application">
-
-                    <b>ONLINE APPLICATION</b>
-
-                    <br><br>
-
-                    Customer details
-
-                    <div class="progress-bar">
-                        <span></span>
-                    </div>
-
-                    <br>
-
-                    Documents uploaded ✓
-
-                </div>
-
-            </div>
-
-            <div class="laptop-base"></div>
-
-        </div>
-
-        <!-- PHONE -->
-        <div class="phone">
-
-            <div class="phone-screen">
-
-                <div class="phone-title">
-                    ROTONDIWA FINANCES
-                </div>
-
-                <div class="phone-circle">
-                    ✓
-                </div>
-
-                <strong style="font-size:8px;">
-                    APPLICATION
-                    APPROVED
-                </strong>
-
-                <br>
-
-                <small style="font-size:6px;color:#8edfff;">
-                    Subject to terms
-                    and conditions
-                </small>
-
-            </div>
-
-        </div>
-
-        <!-- APPROVAL NOTIFICATION -->
-        <div class="approval">
-
-            <div class="approval-icon">✓</div>
-
-            <strong>
-                APPLICATION APPROVED
-            </strong>
-
-            <small>
-                Your application has been
-                successfully processed.
-            </small>
-
-        </div>
-
-        <!-- CASH -->
-        <div class="cash">
-
-            <div class="note">R</div>
-            <div class="note">R</div>
-            <div class="note">R</div>
-
-        </div>
-
-        <!-- SUCCESS MESSAGE -->
-        <div class="success">
-
-            <h1>
-                You're <span>approved.</span>
-            </h1>
-
-            <p>
-                Moving forward with Rotondiwa Finances.
-            </p>
-
-        </div>
-
-        <!-- LIGHT SWEEP -->
-        <div class="light-sweep"></div>
+        <div class="brandLine"></div>
 
     </div>
 
-    <!-- TIMER -->
-    <div class="timer">
-        <span></span>
+
+    <!-- SCENE TEXT -->
+
+    <div class="sceneText" id="sceneText">
+
+        <div class="kicker" id="kicker">
+            Financial solutions
+        </div>
+
+        <div class="headline" id="headline">
+            When life moves,<br>
+            so should you.
+        </div>
+
+        <div class="description" id="description">
+            Professional financial solutions designed around your needs.
+        </div>
+
     </div>
 
-    <!-- CTA -->
-    <a
-        class="cta"
-        href="https://gleaming-flan-dfa40f.netlify.app/"
-        target="_blank"
-    >
-        APPLY ONLINE →
-    </a>
 
-    <!-- REPLAY -->
-    <button class="replay" onclick="location.reload()">
-        ↻ REPLAY
+    <!-- APPROVAL POPUP -->
+
+    <div class="approval" id="approval">
+
+        <div class="approvalIcon">
+            ✓
+        </div>
+
+        <div class="approvalTitle">
+            Application Update
+        </div>
+
+        <div class="approvalText">
+            Your application has been reviewed.
+            Please follow the instructions provided
+            by Rotondiwa Finances.
+        </div>
+
+        <div class="approvalSmall">
+            Subject to approval & assessment
+        </div>
+
+    </div>
+
+
+    <!-- FINAL SCREEN -->
+
+    <div class="final" id="final">
+
+        <div class="finalLogo">
+            ROTONDIWA FINANCES
+        </div>
+
+        <div class="finalLine"></div>
+
+        <div class="finalTitle">
+            Your next move<br>
+            starts here.
+        </div>
+
+        <div class="finalSub">
+            Apply online and speak to our team
+            about your financial needs.
+        </div>
+
+        <div class="website">
+            gleaming-flan-dfa40f.netlify.app
+        </div>
+
+    </div>
+
+
+    <!-- SOUND -->
+
+    <button class="sound" id="sound">
+        🔇
     </button>
+
+
+    <!-- DISCLAIMER -->
+
+    <div class="disclaimer">
+        Applications are subject to approval, affordability assessment
+        and applicable terms and conditions. No guaranteed approval
+        or payout is implied.
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress">
+        <div class="progressBar" id="progressBar"></div>
+    </div>
 
 </div>
 
+
+<script>
+
+/* =====================================================
+   ROTONDIWA FINANCES CINEMATIC AD ENGINE
+===================================================== */
+
+const videos = [
+    document.getElementById("video1"),
+    document.getElementById("video2"),
+    document.getElementById("video3"),
+    document.getElementById("video4"),
+    document.getElementById("video5"),
+    document.getElementById("video6")
+];
+
+const sceneText = document.getElementById("sceneText");
+const kicker = document.getElementById("kicker");
+const headline = document.getElementById("headline");
+const description = document.getElementById("description");
+
+const approval = document.getElementById("approval");
+const final = document.getElementById("final");
+
+const brand = document.getElementById("brand");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const soundButton =
+    document.getElementById("sound");
+
+
+/* =========================================
+   SCENE CONTENT
+========================================= */
+
+const scenes = [
+
+    {
+        kicker:"ROT0NDIWA FINANCES",
+        headline:"When life moves,<br>so should you.",
+        description:
+        "Professional financial solutions designed around your needs."
+    },
+
+    {
+        kicker:"SPEAK TO OUR TEAM",
+        headline:"Real people.<br>Real conversations.",
+        description:
+        "Our team is here to understand your needs and guide you through the process."
+    },
+
+    {
+        kicker:"APPLY ONLINE",
+        headline:"Simple.<br>Secure. Convenient.",
+        description:
+        "Start your application online without unnecessary delays."
+    },
+
+    {
+        kicker:"APPLICATION UPDATE",
+        headline:"Your application<br>is being reviewed.",
+        description:
+        "Our team assesses each application according to the applicable requirements."
+    },
+
+    {
+        kicker:"FINANCIAL ASSISTANCE",
+        headline:"Move forward<br>with confidence.",
+        description:
+        "Once approved, follow the next steps provided by our team."
+    },
+
+    {
+        kicker:"ROTONDIWA FINANCES",
+        headline:"Your next move<br>starts here.",
+        description:
+        "Apply online or speak to our team today."
+    }
+
+];
+
+
+/* =========================================
+   SHOW SCENE TEXT
+========================================= */
+
+function showSceneText(index){
+
+    sceneText.classList.remove("show");
+
+    setTimeout(()=>{
+
+        const scene = scenes[index];
+
+        kicker.innerHTML = scene.kicker;
+        headline.innerHTML = scene.headline;
+        description.innerHTML = scene.description;
+
+        sceneText.classList.add("show");
+
+    },350);
+}
+
+
+/* =========================================
+   SWITCH VIDEO
+========================================= */
+
+let current = 0;
+
+function switchVideo(next){
+
+    if(next >= videos.length){
+
+        finishAd();
+
+        return;
+    }
+
+    const oldVideo = videos[current];
+    const newVideo = videos[next];
+
+    oldVideo.classList.remove("active");
+
+    newVideo.currentTime = 0;
+    newVideo.classList.add("active");
+
+    current = next;
+
+    showSceneText(current);
+
+    newVideo.play().catch(()=>{});
+
+    if(current === 3){
+
+        setTimeout(()=>{
+
+            approval.classList.add("show");
+
+        },700);
+
+        setTimeout(()=>{
+
+            approval.classList.remove("show");
+
+        },3600);
+
+    }
+
+}
+
+
+/* =========================================
+   VIDEO END EVENTS
+========================================= */
+
+videos.forEach((video,index)=>{
+
+    video.addEventListener("ended",()=>{
+
+        switchVideo(index + 1);
+
+    });
+
+});
+
+
+/* =========================================
+   START
+========================================= */
+
+brand.classList.add("show");
+
+showSceneText(0);
+
+videos[0].play().catch(()=>{});
+
+
+/* =========================================
+   GLOBAL PROGRESS
+========================================= */
+
+let elapsed = 0;
+
+const totalDuration = 30;
+
+setInterval(()=>{
+
+    elapsed += .1;
+
+    const percentage =
+        Math.min((elapsed / totalDuration) * 100,100);
+
+    progressBar.style.width =
+        percentage + "%";
+
+},100);
+
+
+/* =========================================
+   FINAL SCREEN
+========================================= */
+
+function finishAd(){
+
+    sceneText.classList.remove("show");
+
+    approval.classList.remove("show");
+
+    final.classList.add("show");
+
+}
+
+
+/* =========================================
+   SOUND CONTROL
+========================================= */
+
+let muted = true;
+
+soundButton.addEventListener("click",()=>{
+
+    muted = !muted;
+
+    videos.forEach(video=>{
+        video.muted = muted;
+    });
+
+    soundButton.innerHTML =
+        muted ? "🔇" : "🔊";
+
+});
+
+
+/* =========================================
+   KEYBOARD CONTROL
+========================================= */
+
+document.addEventListener("keydown",(event)=>{
+
+    if(event.code === "Space"){
+
+        event.preventDefault();
+
+        const video = videos[current];
+
+        if(video.paused){
+
+            video.play();
+
+        }else{
+
+            video.pause();
+
+        }
+
+    }
+
+});
+
+
+/* =========================================
+   PRELOAD
+========================================= */
+
+videos.forEach(video=>{
+
+    video.load();
+
+});
+
+</script>
+
 </body>
 </html>
-```
