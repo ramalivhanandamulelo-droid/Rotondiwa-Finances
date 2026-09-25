@@ -2,24 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rotondiwa Finances | Commercial</title>
+<title>Rotondiwa Finances — Commercial</title>
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html,body{
     width:100%;
     height:100%;
+    background:#02050a;
     overflow:hidden;
-    background:#02070d;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
@@ -28,243 +27,303 @@ body{
     align-items:center;
 }
 
-/* =========================================
-   CINEMATIC FRAME
-========================================= */
-
 .ad{
     position:relative;
     width:100vw;
     height:100vh;
-    max-width:56.25vh;
     overflow:hidden;
-    background:#02070d;
+    background:#02050a;
 }
 
-/* =========================================
-   VIDEO
-========================================= */
+/* VIDEO */
 
-.video{
+video{
     position:absolute;
     inset:0;
+
     width:100%;
     height:100%;
+
     object-fit:cover;
-    opacity:0;
+
+    filter:
+        brightness(.58)
+        contrast(1.18)
+        saturate(.85);
+
     transform:scale(1.04);
+
     transition:
         opacity 1s ease,
-        transform 8s cubic-bezier(.2,.7,.2,1);
-    filter:
-        brightness(.72)
-        contrast(1.08)
-        saturate(.92);
-}
+        transform 7s ease;
 
-.video.active{
     opacity:1;
-    transform:scale(1);
 }
 
-/* =========================================
-   BLUE CINEMATIC LIGHT
-========================================= */
+/* CINEMATIC BLUE GLOW */
 
-.blueLight{
+.blue{
     position:absolute;
-    inset:-20%;
+    inset:-30%;
+
+    z-index:2;
+
     pointer-events:none;
 
     background:
         radial-gradient(
-            ellipse at 15% 45%,
-            rgba(0,120,255,.35),
-            transparent 35%
+            ellipse at 5% 50%,
+            rgba(0,111,255,.55),
+            transparent 34%
         ),
         radial-gradient(
-            ellipse at 90% 20%,
-            rgba(0,190,255,.20),
+            ellipse at 100% 15%,
+            rgba(0,180,255,.32),
             transparent 32%
-        ),
-        linear-gradient(
-            115deg,
-            rgba(0,75,180,.25),
-            transparent 40%,
-            rgba(0,145,255,.08)
         );
 
     mix-blend-mode:screen;
-    animation:lightMove 8s ease-in-out infinite alternate;
+
+    animation:
+        blueMove 8s infinite alternate ease-in-out;
 }
 
-@keyframes lightMove{
+@keyframes blueMove{
+
     from{
-        transform:translateX(-2%) scale(1);
+        transform:translateX(-2%);
     }
 
     to{
-        transform:translateX(3%) scale(1.06);
+        transform:translateX(3%);
     }
+
 }
 
-/* =========================================
-   DARK CINEMATIC GRADIENT
-========================================= */
+/* DARK FILM GRADIENT */
 
-.vignette{
+.dark{
     position:absolute;
     inset:0;
+
+    z-index:3;
+
+    pointer-events:none;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(0,0,0,.65) 0%,
-            rgba(0,0,0,.04) 30%,
-            rgba(0,0,0,.05) 60%,
-            rgba(0,0,0,.82) 100%
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.08) 35%,
+            rgba(0,0,0,.12) 55%,
+            rgba(0,0,0,.90)
         );
-
-    pointer-events:none;
 }
 
-/* =========================================
-   FILM GRAIN
-========================================= */
-
-.grain{
-    position:absolute;
-    inset:-50%;
-
-    opacity:.06;
-    pointer-events:none;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-
-    animation:grain .2s steps(2) infinite;
-}
-
-@keyframes grain{
-    0%{transform:translate(0,0)}
-    25%{transform:translate(2%,-1%)}
-    50%{transform:translate(-1%,2%)}
-    75%{transform:translate(1%,1%)}
-    100%{transform:translate(-2%,-2%)}
-}
-
-/* =========================================
-   TOP BRAND
-========================================= */
+/* TOP BRAND */
 
 .brand{
     position:absolute;
+
     top:35px;
     left:28px;
 
-    z-index:20;
+    z-index:10;
 
-    opacity:0;
-    transform:translateY(-15px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
-.brand.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.brandName{
     color:white;
-    font-size:18px;
-    font-weight:800;
+
     letter-spacing:2px;
+
+    font-size:15px;
+    font-weight:800;
+
+    text-shadow:
+        0 0 20px rgba(0,140,255,.7);
 }
 
-.brandLine{
-    width:42px;
+.brand span{
+    display:block;
+
+    width:45px;
     height:3px;
+
     margin-top:7px;
 
-    background:#1d9dff;
+    background:#168cff;
+
     box-shadow:
-        0 0 10px rgba(29,157,255,.9),
-        0 0 25px rgba(29,157,255,.5);
+        0 0 15px #168cff;
 }
 
-/* =========================================
-   SCENE TEXT
-========================================= */
+/* TEXT */
 
-.sceneText{
+.content{
     position:absolute;
-    z-index:15;
 
-    left:30px;
-    right:30px;
-    bottom:105px;
+    left:28px;
+    right:28px;
+    bottom:115px;
+
+    z-index:10;
 
     color:white;
 
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.content.hide{
     opacity:0;
     transform:translateY(25px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
 }
 
-.sceneText.show{
-    opacity:1;
-    transform:translateY(0);
-}
+.label{
+    color:#4bb5ff;
 
-.kicker{
-    color:#51b8ff;
     font-size:11px;
-    font-weight:700;
+
+    font-weight:bold;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
 
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-.headline{
-    font-size:35px;
-    line-height:1.03;
-    font-weight:800;
+.title{
+    font-size:39px;
+
+    line-height:1.02;
+
+    font-weight:900;
+
     letter-spacing:-1.5px;
 
     text-shadow:
-        0 4px 20px rgba(0,0,0,.7);
+        0 5px 25px rgba(0,0,0,.9);
 }
 
 .description{
-    margin-top:12px;
+    max-width:330px;
 
-    max-width:310px;
-
-    color:rgba(255,255,255,.82);
+    margin-top:14px;
 
     font-size:13px;
-    line-height:1.5;
+
+    line-height:1.55;
+
+    color:rgba(255,255,255,.82);
 }
 
-/* =========================================
-   APPROVAL NOTIFICATION
-========================================= */
+/* APPLICATION PHONE */
 
-.approval{
+.phone{
     position:absolute;
-    z-index:25;
+
+    z-index:15;
+
+    right:25px;
+    bottom:150px;
+
+    width:125px;
+    height:240px;
+
+    border-radius:22px;
+
+    padding:7px;
+
+    background:#070b11;
+
+    border:2px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.8),
+        0 0 40px rgba(0,130,255,.35);
+
+    transform:
+        translateY(40px)
+        rotate(4deg);
+
+    opacity:0;
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.phone.show{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        rotate(4deg);
+}
+
+.phoneScreen{
+    height:100%;
+
+    border-radius:16px;
+
+    padding:20px 12px;
+
+    background:
+        linear-gradient(
+            150deg,
+            #06182b,
+            #02101f
+        );
+}
+
+.phoneLogo{
+    color:white;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+}
+
+.amount{
+    color:#55bbff;
+
+    font-size:22px;
+
+    font-weight:900;
+
+    margin-top:30px;
+}
+
+.apply{
+    margin-top:20px;
+
+    padding:9px;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    font-size:9px;
+
+    color:white;
+
+    background:#087df0;
+
+    box-shadow:
+        0 0 18px rgba(0,130,255,.5);
+}
+
+/* APPROVAL */
+
+.approved{
+    position:absolute;
+
+    z-index:20;
 
     left:50%;
-    top:52%;
-
-    width:270px;
+    top:50%;
 
     transform:
         translate(-50%,-50%)
@@ -272,27 +331,29 @@ body{
 
     opacity:0;
 
-    background:
-        rgba(3,13,23,.92);
+    width:290px;
 
-    border:1px solid rgba(61,177,255,.55);
+    padding:25px;
 
     border-radius:20px;
 
-    padding:23px;
+    background:
+        rgba(3,13,25,.94);
+
+    border:
+        1px solid rgba(54,172,255,.6);
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,.65),
-        0 0 45px rgba(0,132,255,.18);
+        0 30px 100px rgba(0,0,0,.8),
+        0 0 50px rgba(0,120,255,.3);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(20px);
 
     transition:
-        opacity .6s ease,
-        transform .6s cubic-bezier(.16,1,.3,1);
+        .7s cubic-bezier(.2,.8,.2,1);
 }
 
-.approval.show{
+.approved.show{
     opacity:1;
 
     transform:
@@ -300,9 +361,9 @@ body{
         scale(1);
 }
 
-.approvalIcon{
-    width:46px;
-    height:46px;
+.tick{
+    width:48px;
+    height:48px;
 
     border-radius:50%;
 
@@ -310,68 +371,65 @@ body{
     align-items:center;
     justify-content:center;
 
-    margin-bottom:15px;
+    background:#087ff4;
 
-    background:#0a8dff;
+    color:white;
+
+    font-size:22px;
+
+    margin-bottom:14px;
 
     box-shadow:
-        0 0 25px rgba(10,141,255,.55);
+        0 0 30px rgba(0,140,255,.6);
+}
 
+.approved h2{
     color:white;
+
     font-size:21px;
-    font-weight:bold;
 }
 
-.approvalTitle{
-    color:white;
-    font-size:20px;
-    font-weight:800;
-}
+.approved p{
+    color:rgba(255,255,255,.7);
 
-.approvalText{
-    color:rgba(255,255,255,.68);
-    margin-top:7px;
     font-size:12px;
+
     line-height:1.5;
+
+    margin-top:8px;
 }
 
-.approvalSmall{
-    margin-top:15px;
-    color:#51b8ff;
-    font-size:10px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-/* =========================================
-   CTA
-========================================= */
+/* FINAL */
 
 .final{
     position:absolute;
-    z-index:30;
 
     inset:0;
 
+    z-index:30;
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 
     padding:30px;
 
+    opacity:0;
+
+    pointer-events:none;
+
     background:
         radial-gradient(
-            circle at center,
-            rgba(0,107,255,.18),
-            transparent 48%
-        ),
-        rgba(0,4,9,.76);
-
-    opacity:0;
-    pointer-events:none;
+            circle,
+            rgba(0,110,255,.22),
+            rgba(0,0,0,.94) 60%
+        );
 
     transition:opacity 1s ease;
 }
@@ -380,160 +438,122 @@ body{
     opacity:1;
 }
 
-.finalLogo{
-    font-size:27px;
-    font-weight:900;
-    letter-spacing:2px;
-
+.final h1{
     color:white;
 
-    text-shadow:
-        0 0 25px rgba(0,151,255,.65);
+    font-size:34px;
+
+    line-height:1.05;
+
+    font-weight:900;
 }
 
-.finalLine{
-    width:55px;
-    height:3px;
+.final .logo{
+    color:#55baff;
 
-    background:#199cff;
+    font-size:14px;
 
-    margin:12px auto 22px;
-
-    box-shadow:
-        0 0 20px rgba(25,156,255,.9);
-}
-
-.finalTitle{
-    color:white;
-
-    font-size:38px;
-    line-height:1.02;
     font-weight:900;
 
-    max-width:340px;
+    letter-spacing:3px;
+
+    margin-bottom:18px;
 }
 
-.finalSub{
-    color:rgba(255,255,255,.76);
+.final p{
+    color:rgba(255,255,255,.75);
 
     font-size:13px;
-    line-height:1.5;
 
-    max-width:300px;
+    max-width:310px;
 
     margin-top:15px;
+
+    line-height:1.5;
 }
 
 .website{
-    margin-top:24px;
-
-    color:white;
-
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:1px;
+    margin-top:25px;
 
     padding:13px 22px;
 
-    border:1px solid rgba(68,179,255,.65);
-    border-radius:100px;
+    border-radius:50px;
 
-    background:rgba(0,100,190,.18);
+    color:white;
 
-    box-shadow:
-        0 0 25px rgba(0,132,255,.18);
+    border:1px solid rgba(75,180,255,.7);
+
+    background:rgba(0,110,220,.16);
+
+    font-size:12px;
+
+    font-weight:bold;
 }
 
-/* =========================================
-   DISCLAIMER
-========================================= */
-
-.disclaimer{
-    position:absolute;
-    z-index:35;
-
-    left:20px;
-    right:20px;
-    bottom:13px;
-
-    color:rgba(255,255,255,.42);
-
-    font-size:7px;
-    line-height:1.35;
-
-    text-align:center;
-}
-
-/* =========================================
-   PROGRESS
-========================================= */
+/* PROGRESS */
 
 .progress{
     position:absolute;
-    z-index:40;
+
+    z-index:50;
 
     left:0;
-    right:0;
     bottom:0;
 
-    height:2px;
+    height:3px;
+
+    width:100%;
 
     background:rgba(255,255,255,.15);
 }
 
-.progressBar{
-    width:0%;
+.progress span{
+    display:block;
+
     height:100%;
 
-    background:#219fff;
+    width:0%;
+
+    background:#1597ff;
 
     box-shadow:
-        0 0 12px #219fff;
+        0 0 15px #1597ff;
 }
 
-/* =========================================
-   SOUND BUTTON
-========================================= */
+/* SOUND */
 
 .sound{
     position:absolute;
+
     z-index:50;
 
-    right:24px;
-    top:30px;
+    right:25px;
+    top:28px;
 
-    width:34px;
-    height:34px;
+    width:38px;
+    height:38px;
 
-    border:1px solid rgba(255,255,255,.25);
     border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.3);
 
     background:rgba(0,0,0,.35);
 
     color:white;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
     cursor:pointer;
-
-    font-size:12px;
 }
-
-/* =========================================
-   DESKTOP PRESENTATION
-========================================= */
 
 @media(min-width:700px){
 
     .ad{
-        height:90vh;
-        border-radius:16px;
+        width:56.25vh;
+        height:100vh;
+
+        max-width:520px;
 
         box-shadow:
-            0 30px 100px rgba(0,0,0,.75),
-            0 0 70px rgba(0,91,180,.12);
+            0 0 100px rgba(0,0,0,.8);
     }
 
 }
@@ -544,459 +564,361 @@ body{
 
 <div class="ad">
 
-    <!-- =====================================
-         REAL VIDEO CLIPS
-         Replace these files with your
-         realistic human/office footage.
-    ====================================== -->
+<!-- REAL MOVING BUSINESS FOOTAGE -->
 
-    <video
-        id="video1"
-        class="video active"
-        muted
-        playsinline
-        preload="auto">
+<video
+    id="mainVideo"
+    autoplay
+    muted
+    playsinline
+    loop
+    preload="auto">
 
-        <source src="videos/entrance.mp4" type="video/mp4">
-    </video>
+    <!-- Replace this source with a licensed MP4 if desired -->
+    <source
+        src="https://assets.mixkit.co/videos/preview/mixkit-businessman-working-on-a-laptop-in-an-office-40550-large.mp4"
+        type="video/mp4">
 
-    <video
-        id="video2"
-        class="video"
-        muted
-        playsinline
-        preload="auto">
-
-        <source src="videos/consultation.mp4" type="video/mp4">
-    </video>
-
-    <video
-        id="video3"
-        class="video"
-        muted
-        playsinline
-        preload="auto">
-
-        <source src="videos/application.mp4" type="video/mp4">
-    </video>
-
-    <video
-        id="video4"
-        class="video"
-        muted
-        playsinline
-        preload="auto">
-
-        <source src="videos/approval.mp4" type="video/mp4">
-    </video>
-
-    <video
-        id="video5"
-        class="video"
-        muted
-        playsinline
-        preload="auto">
-
-        <source src="videos/assistance.mp4" type="video/mp4">
-    </video>
-
-    <video
-        id="video6"
-        class="video"
-        muted
-        playsinline
-        preload="auto">
-
-        <source src="videos/exit.mp4" type="video/mp4">
-    </video>
+</video>
 
 
-    <!-- CINEMATIC EFFECTS -->
+<div class="blue"></div>
 
-    <div class="blueLight"></div>
-    <div class="vignette"></div>
-    <div class="grain"></div>
+<div class="dark"></div>
 
 
-    <!-- BRAND -->
+<div class="brand">
 
-    <div class="brand" id="brand">
+    ROTONDIWA FINANCES
 
-        <div class="brandName">
+    <span></span>
+
+</div>
+
+
+<div class="content" id="content">
+
+    <div class="label" id="label">
+        FINANCIAL SOLUTIONS
+    </div>
+
+    <div class="title" id="title">
+        When life moves,<br>
+        so should you.
+    </div>
+
+    <div class="description" id="description">
+        Professional financial solutions designed
+        around your needs.
+    </div>
+
+</div>
+
+
+<!-- PHONE -->
+
+<div class="phone" id="phone">
+
+    <div class="phoneScreen">
+
+        <div class="phoneLogo">
             ROTONDIWA FINANCES
         </div>
 
-        <div class="brandLine"></div>
-
-    </div>
-
-
-    <!-- SCENE TEXT -->
-
-    <div class="sceneText" id="sceneText">
-
-        <div class="kicker" id="kicker">
-            Financial solutions
+        <div class="amount">
+            APPLY ONLINE
         </div>
 
-        <div class="headline" id="headline">
-            When life moves,<br>
-            so should you.
-        </div>
-
-        <div class="description" id="description">
-            Professional financial solutions designed around your needs.
+        <div class="apply">
+            START APPLICATION
         </div>
 
     </div>
 
+</div>
 
-    <!-- APPROVAL POPUP -->
 
-    <div class="approval" id="approval">
+<!-- APPROVAL -->
 
-        <div class="approvalIcon">
-            ✓
-        </div>
+<div class="approved" id="approved">
 
-        <div class="approvalTitle">
-            Application Update
-        </div>
-
-        <div class="approvalText">
-            Your application has been reviewed.
-            Please follow the instructions provided
-            by Rotondiwa Finances.
-        </div>
-
-        <div class="approvalSmall">
-            Subject to approval & assessment
-        </div>
-
+    <div class="tick">
+        ✓
     </div>
 
+    <h2>
+        Application Update
+    </h2>
 
-    <!-- FINAL SCREEN -->
+    <p>
+        Your application has been reviewed.
+        Please follow the next steps provided
+        by Rotondiwa Finances.
+    </p>
 
-    <div class="final" id="final">
+</div>
 
-        <div class="finalLogo">
-            ROTONDIWA FINANCES
-        </div>
 
-        <div class="finalLine"></div>
+<!-- FINAL -->
 
-        <div class="finalTitle">
-            Your next move<br>
-            starts here.
-        </div>
+<div class="final" id="final">
 
-        <div class="finalSub">
-            Apply online and speak to our team
-            about your financial needs.
-        </div>
-
-        <div class="website">
-            gleaming-flan-dfa40f.netlify.app
-        </div>
-
+    <div class="logo">
+        ROTONDIWA FINANCES
     </div>
 
+    <h1>
+        Your next move<br>
+        starts here.
+    </h1>
 
-    <!-- SOUND -->
+    <p>
+        Apply online or speak to our team
+        about your financial needs.
+    </p>
 
-    <button class="sound" id="sound">
-        🔇
-    </button>
-
-
-    <!-- DISCLAIMER -->
-
-    <div class="disclaimer">
-        Applications are subject to approval, affordability assessment
-        and applicable terms and conditions. No guaranteed approval
-        or payout is implied.
+    <div class="website">
+        gleaming-flan-dfa40f.netlify.app
     </div>
 
+</div>
 
-    <!-- PROGRESS -->
 
-    <div class="progress">
-        <div class="progressBar" id="progressBar"></div>
-    </div>
+<button class="sound" id="sound">
+    🔇
+</button>
+
+
+<div class="progress">
+    <span id="bar"></span>
+</div>
 
 </div>
 
 
 <script>
 
-/* =====================================================
-   ROTONDIWA FINANCES CINEMATIC AD ENGINE
-===================================================== */
+const video =
+document.getElementById("mainVideo");
 
-const videos = [
-    document.getElementById("video1"),
-    document.getElementById("video2"),
-    document.getElementById("video3"),
-    document.getElementById("video4"),
-    document.getElementById("video5"),
-    document.getElementById("video6")
-];
+const content =
+document.getElementById("content");
 
-const sceneText = document.getElementById("sceneText");
-const kicker = document.getElementById("kicker");
-const headline = document.getElementById("headline");
-const description = document.getElementById("description");
+const label =
+document.getElementById("label");
 
-const approval = document.getElementById("approval");
-const final = document.getElementById("final");
+const title =
+document.getElementById("title");
 
-const brand = document.getElementById("brand");
+const description =
+document.getElementById("description");
 
-const progressBar =
-    document.getElementById("progressBar");
+const phone =
+document.getElementById("phone");
 
-const soundButton =
-    document.getElementById("sound");
+const approved =
+document.getElementById("approved");
 
+const final =
+document.getElementById("final");
 
-/* =========================================
-   SCENE CONTENT
-========================================= */
+const bar =
+document.getElementById("bar");
 
-const scenes = [
+const sound =
+document.getElementById("sound");
 
-    {
-        kicker:"ROT0NDIWA FINANCES",
-        headline:"When life moves,<br>so should you.",
-        description:
-        "Professional financial solutions designed around your needs."
-    },
 
-    {
-        kicker:"SPEAK TO OUR TEAM",
-        headline:"Real people.<br>Real conversations.",
-        description:
-        "Our team is here to understand your needs and guide you through the process."
-    },
+/* SCENE 1 */
 
-    {
-        kicker:"APPLY ONLINE",
-        headline:"Simple.<br>Secure. Convenient.",
-        description:
-        "Start your application online without unnecessary delays."
-    },
+setTimeout(()=>{
 
-    {
-        kicker:"APPLICATION UPDATE",
-        headline:"Your application<br>is being reviewed.",
-        description:
-        "Our team assesses each application according to the applicable requirements."
-    },
+    label.innerHTML =
+    "ROTONDIWA FINANCES";
 
-    {
-        kicker:"FINANCIAL ASSISTANCE",
-        headline:"Move forward<br>with confidence.",
-        description:
-        "Once approved, follow the next steps provided by our team."
-    },
+    title.innerHTML =
+    "When life moves,<br>so should you.";
 
-    {
-        kicker:"ROTONDIWA FINANCES",
-        headline:"Your next move<br>starts here.",
-        description:
-        "Apply online or speak to our team today."
-    }
-
-];
-
-
-/* =========================================
-   SHOW SCENE TEXT
-========================================= */
-
-function showSceneText(index){
-
-    sceneText.classList.remove("show");
-
-    setTimeout(()=>{
-
-        const scene = scenes[index];
-
-        kicker.innerHTML = scene.kicker;
-        headline.innerHTML = scene.headline;
-        description.innerHTML = scene.description;
-
-        sceneText.classList.add("show");
-
-    },350);
-}
-
-
-/* =========================================
-   SWITCH VIDEO
-========================================= */
-
-let current = 0;
-
-function switchVideo(next){
-
-    if(next >= videos.length){
-
-        finishAd();
-
-        return;
-    }
-
-    const oldVideo = videos[current];
-    const newVideo = videos[next];
-
-    oldVideo.classList.remove("active");
-
-    newVideo.currentTime = 0;
-    newVideo.classList.add("active");
-
-    current = next;
-
-    showSceneText(current);
-
-    newVideo.play().catch(()=>{});
-
-    if(current === 3){
-
-        setTimeout(()=>{
-
-            approval.classList.add("show");
-
-        },700);
-
-        setTimeout(()=>{
-
-            approval.classList.remove("show");
-
-        },3600);
-
-    }
-
-}
-
-
-/* =========================================
-   VIDEO END EVENTS
-========================================= */
-
-videos.forEach((video,index)=>{
-
-    video.addEventListener("ended",()=>{
-
-        switchVideo(index + 1);
-
-    });
-
-});
-
-
-/* =========================================
-   START
-========================================= */
-
-brand.classList.add("show");
-
-showSceneText(0);
-
-videos[0].play().catch(()=>{});
-
-
-/* =========================================
-   GLOBAL PROGRESS
-========================================= */
-
-let elapsed = 0;
-
-const totalDuration = 30;
-
-setInterval(()=>{
-
-    elapsed += .1;
-
-    const percentage =
-        Math.min((elapsed / totalDuration) * 100,100);
-
-    progressBar.style.width =
-        percentage + "%";
+    description.innerHTML =
+    "Professional financial solutions designed around your needs.";
 
 },100);
 
 
-/* =========================================
-   FINAL SCREEN
-========================================= */
+/* SCENE 2 */
 
-function finishAd(){
+setTimeout(()=>{
 
-    sceneText.classList.remove("show");
+    content.classList.add("hide");
 
-    approval.classList.remove("show");
+    setTimeout(()=>{
+
+        label.innerHTML =
+        "SPEAK TO OUR TEAM";
+
+        title.innerHTML =
+        "Real people.<br>Real conversations.";
+
+        description.innerHTML =
+        "Talk to our team and discuss your financial needs.";
+
+        content.classList.remove("hide");
+
+    },500);
+
+},5000);
+
+
+/* SCENE 3 */
+
+setTimeout(()=>{
+
+    content.classList.add("hide");
+
+    setTimeout(()=>{
+
+        label.innerHTML =
+        "APPLY ONLINE";
+
+        title.innerHTML =
+        "Simple.<br>Convenient.";
+
+        description.innerHTML =
+        "Start your application online from wherever you are.";
+
+        phone.classList.add("show");
+
+        content.classList.remove("hide");
+
+    },500);
+
+},10000);
+
+
+/* SCENE 4 */
+
+setTimeout(()=>{
+
+    phone.classList.remove("show");
+
+    content.classList.add("hide");
+
+    setTimeout(()=>{
+
+        label.innerHTML =
+        "APPLICATION UPDATE";
+
+        title.innerHTML =
+        "Your application<br>is being reviewed.";
+
+        description.innerHTML =
+        "Every application is assessed according to the applicable requirements.";
+
+        content.classList.remove("hide");
+
+        setTimeout(()=>{
+
+            approved.classList.add("show");
+
+        },800);
+
+        setTimeout(()=>{
+
+            approved.classList.remove("show");
+
+        },3500);
+
+    },500);
+
+},15000);
+
+
+/* SCENE 5 */
+
+setTimeout(()=>{
+
+    content.classList.add("hide");
+
+    setTimeout(()=>{
+
+        label.innerHTML =
+        "FINANCIAL ASSISTANCE";
+
+        title.innerHTML =
+        "Move forward<br>with confidence.";
+
+        description.innerHTML =
+        "Once approved, follow the next steps provided by our team.";
+
+        content.classList.remove("hide");
+
+    },500);
+
+},21500);
+
+
+/* FINAL */
+
+setTimeout(()=>{
+
+    content.classList.remove("hide");
 
     final.classList.add("show");
 
+},26500);
+
+
+/* PROGRESS */
+
+let start =
+Date.now();
+
+function progress(){
+
+    let elapsed =
+    (Date.now()-start)/30000*100;
+
+    bar.style.width =
+    Math.min(elapsed,100)+"%";
+
+    requestAnimationFrame(progress);
+
 }
 
+progress();
 
-/* =========================================
-   SOUND CONTROL
-========================================= */
 
-let muted = true;
+/* SOUND */
 
-soundButton.addEventListener("click",()=>{
+let muted=true;
 
-    muted = !muted;
+sound.onclick=()=>{
 
-    videos.forEach(video=>{
-        video.muted = muted;
+    muted=!muted;
+
+    video.muted=muted;
+
+    sound.innerHTML =
+    muted ? "🔇" : "🔊";
+
+};
+
+
+/* FORCE PLAY */
+
+window.addEventListener("load",()=>{
+
+    video.play().catch(()=>{
+
+        document.body.addEventListener(
+            "click",
+            ()=>{
+                video.play();
+            },
+            {once:true}
+        );
+
     });
-
-    soundButton.innerHTML =
-        muted ? "🔇" : "🔊";
-
-});
-
-
-/* =========================================
-   KEYBOARD CONTROL
-========================================= */
-
-document.addEventListener("keydown",(event)=>{
-
-    if(event.code === "Space"){
-
-        event.preventDefault();
-
-        const video = videos[current];
-
-        if(video.paused){
-
-            video.play();
-
-        }else{
-
-            video.pause();
-
-        }
-
-    }
-
-});
-
-
-/* =========================================
-   PRELOAD
-========================================= */
-
-videos.forEach(video=>{
-
-    video.load();
 
 });
 
